@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>InstitutionsTilsyn</groupId>
+    <artifactId>TilsynInstitution.com</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>Main</mainClass>
+                        </transformer>
+                        <!-- includes Services in jar-->
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+
+                    </transformers>
+                    <finalName>Heroku01</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+
+        <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.source>1.8</maven.compiler.source>
+            <maven.compiler.target>1.8</maven.compiler.target>
+            <tomcat.version>9.0.21</tomcat.version>
+
+
+
+
+        </properties>
+        <dependencies>
+            <!--Embedded Tomcat-->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+            <!-- JSP - to shut up Tomcat -->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-jasper</artifactId>
+                <version>${tomcat.version}</version>
+            </dependency>
+
+
+<!--        Til Rest-->
+            <!-- Rest Spec -->
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>2.1.1</version>
+            </dependency>
+            <!-- Servlet spec -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>4.0.1</version>
+            </dependency>
+            <!-- Container -->
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-servlet</artifactId>
+                <version>2.27</version>
+            </dependency>
+            <!-- Injection manager -->
+            <dependency>
+                <groupId>org.glassfish.jersey.inject</groupId>
+                <artifactId>jersey-hk2</artifactId>
+                <version>2.27</version>
+            </dependency>
+            <!-- Old school xml bindings to shut up tomcat -->
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>2.3.0</version>
+            </dependency>
+            <!-- Same as Above -->
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>1.1</version>
+            </dependency>
+
+            <!--junit-->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.5.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>5.5.2</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!--MongoDB-->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>3.11.1</version>
+            </dependency>
+
+            <!--JONGO for MongoDB-->
+            <!-- https://mvnrepository.com/artifact/org.jongo/jongo -->
+            <dependency>
+                <groupId>org.jongo</groupId>
+                <artifactId>jongo</artifactId>
+                <version>1.4.0</version>
+            </dependency>
+
+
+
+            <!--LOMBOK-->
+            <dependency>
+                <groupId>org.jongo</groupId>
+                <artifactId>jongo</artifactId>
+                <version>1.3.0</version>
+            </dependency>
+
+
+            <!--JSON-->
+            <dependency>
+                <groupId>com.tdunning</groupId>
+                <artifactId>json</artifactId>
+                <version>1.8</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.8.5</version>
+            </dependency>
+
+        </dependencies>
+
+    <profiles>
+        <profile>
+            <activation>
+                <property>
+                    <name>!env.HEROKUBUILD</name>
+                </property>
+            </activation>
+            <id>local</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <workingDirectory>web</workingDirectory>
+                                    <executable>npm</executable>
+                                    <arguments>
+                                        <argument>run</argument>
+                                        <argument>build</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <!-- Copy NPM build to java webapp folder -->
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.6</version>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${basedir}/src/main/webapp</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/web/build</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <nonFilteredFileExtensions>
+
+                                <nonFilteredFileExtension>woff</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                            </nonFilteredFileExtensions>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <!--Metoden ovenfor anvender IntelliJ's indbyggede compiler og SDK. Maven har indbygget funktionalitet til at køre build scripts. I det følgende anvendes maven-shade-plugin'et. Det sørger for at pakke din kode og alle dependencies i en 'fat'- eller 'über'-jar.-->
+
+
+
+
+</project>

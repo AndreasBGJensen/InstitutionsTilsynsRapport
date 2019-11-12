@@ -13,7 +13,7 @@ import {Switch} from "react-router-dom"
 import Container from "react-bootstrap/Container";
 import institutionView from "./comtainer/Costumer/InstitutionView"
 
-const vuggestuer = new InstitutionsStore();
+
 
 class App extends React.Component{
 

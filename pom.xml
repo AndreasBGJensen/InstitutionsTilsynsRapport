@@ -217,5 +217,5 @@
         </profile>
     </profiles>
     <!--Metoden ovenfor anvender IntelliJ's indbyggede compiler og SDK. Maven har indbygget funktionalitet til at køre build scripts. I det følgende anvendes maven-shade-plugin'et. Det sørger for at pakke din kode og alle dependencies i en 'fat'- eller 'über'-jar.-->
-    
+
 </project>

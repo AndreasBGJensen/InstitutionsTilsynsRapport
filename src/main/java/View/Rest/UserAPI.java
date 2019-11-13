@@ -47,6 +47,7 @@ public class UserAPI {
      return   controlle.deleteUser(id);
     }
 
+    //TODO:Christian, hvordan er det nu det er med throws NoImplementationException, hvorfor skal den throwes - hvorfor bliver den ikke throwet?
     @GET
     @Path("/getKGardenQuery")
     public Response getKGQuery(@QueryParam("name") String name)throws NoImplementationException {

@@ -27,6 +27,7 @@ render()
             <Container>
                 <Router>
                     <Switch>
+                        <Route exact path={"/"} component={LandingPage}/>
                         <Route path={"/register"} component={Register}/>
                         <Route path={"/login"} component={LogIn}/>
                         <Route path={"/search"} component={SearchInstitution}/>

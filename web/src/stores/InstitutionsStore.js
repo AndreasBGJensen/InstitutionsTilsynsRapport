@@ -17,25 +17,26 @@ state = states.DONE;
         this.fetchItem();
     }
 
-
+//Todo: find out why this is called only when npm restarts
 //The fetchcall
     fetchItem (){
 
         this.state = states.LOADING;
-        fetch(baseUrl + "rest/mongo/test")
-            .then((response)=> {
-                console.log(response);
-                response.json().then((json)=> {
-                    this.test = json;
-                    console.log(this.test)
-                    this.vuggestuer = json;
-                    this.state = states.DONE;
-                })
+        fetch(baseUrl + "rest/mongo/getKGardenQuery")
+        .then((response)=> {
+            console.log(response);
+            response.json().then((json)=> {
+
+                console.log(this.test)
+                this.vuggestuer = json;
+                this.state = states.DONE;
             })
-            .catch((error)=>{
-                console.log(error)
-                this.state = states.FAILED;
-            });
+        })
+        .catch((error)=>{
+            console.log(error.status)
+            this.state = states.FAILED;
+            //this.vuggestuer = ["loading failed, kindergarden not found :C. The servers is likely down."]
+        });
     }
 
 

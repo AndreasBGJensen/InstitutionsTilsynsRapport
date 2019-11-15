@@ -34,6 +34,7 @@ state = states.DONE;
             })
             .catch((error)=>{
                 console.log(error)
+                NotFou
                 this.state = states.FAILED;
             });
     }

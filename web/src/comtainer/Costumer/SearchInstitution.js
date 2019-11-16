@@ -78,7 +78,7 @@ class SearchInstitution extends React.Component {
                     <br/>
 
 
-                    <Link to ={{
+                    <Link to ={{//Linking to search results
                         pathname: "/searchResults",
                         state:{
                             name: "Hello"

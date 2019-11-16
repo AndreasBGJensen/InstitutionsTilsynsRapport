@@ -85,14 +85,10 @@ class SearchInstitution extends React.Component {
                         state:{
                             name: "Hello"
                         }
-
                     }} >
                         <input type="submit"/>
                     </Link>
-
-
                 </form>
-
             </div>
             )
         }

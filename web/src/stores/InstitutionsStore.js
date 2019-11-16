@@ -34,6 +34,7 @@ state = states.DONE;
             })
             .catch((error)=>{
                 console.log(error)
+
                 this.state = states.FAILED;
             });
     }

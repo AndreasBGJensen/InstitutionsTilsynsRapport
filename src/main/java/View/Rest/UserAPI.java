@@ -3,12 +3,13 @@ package View.Rest;
 
 import Controller.UserController.IUserController;
 import Controller.UserController.UserController;
+import View.Rest.Exceptions.NoImplementationException;
+import View.Rest.Exceptions.NoImplementationExceptionMapper;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-
+import java.util.List;
 
 
 @Path("mongo")
@@ -41,9 +42,16 @@ public class UserAPI {
 
 
     @DELETE
-    @Path("{id}")
+    @Path("/delete/{id}")
     public Response deleteUser(@PathParam("id") String id){
      return   controlle.deleteUser(id);
+    }
+
+    @GET
+    @Path("/getKGardenQuery")
+    public Response getKGQuery(@QueryParam("name") String name)throws NoImplementationException {
+        return new NoImplementationExceptionMapper().toResponse(new NoImplementationException("Kidnergarden-queries not implemented, yetjjiiono"));
+
     }
 
 }

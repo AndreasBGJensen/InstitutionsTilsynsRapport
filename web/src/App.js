@@ -12,6 +12,8 @@ import SearchInstitution from "./comtainer/Costumer/SearchInstitution"
 import {Switch} from "react-router-dom"
 import Container from "react-bootstrap/Container";
 import institutionView from "./comtainer/Costumer/InstitutionView"
+import LandingPage from "./comtainer/LandingPage"
+import Navbar from "./comtainer/Utility/NavBar";
 
 
 
@@ -25,6 +27,7 @@ render()
 
 
             <Container>
+                <Navbar/>
                 <Router>
                     <Switch>
                         <Route exact path={"/"} component={LandingPage}/>

@@ -16,6 +16,7 @@ class SearchInstitution extends React.Component {
     }
 
     onSubmit=(evt)=>{
+
         const adresses = [...this.state.adresses];
         const field = this.state.fiels
         const fieldError = this.validate(field);
@@ -24,7 +25,7 @@ class SearchInstitution extends React.Component {
 
         if(Object.keys(fieldError).length) return;
 
-
+//Here I set the state for the input.
         this.setState({
             fields:adresses.concat(field),
             fiels :{
@@ -36,7 +37,7 @@ class SearchInstitution extends React.Component {
   console.log(this.state.fiels)
 
     }
-
+//Validates if there is an input
     validate=(fiels)=>{
         const errors={};
         if(!fiels.adress) errors.adress = "Adress required";
@@ -46,6 +47,7 @@ class SearchInstitution extends React.Component {
 
     };
 
+    //This function updates every time a key have been stroke
     onInputChange = (event) => {
 
         const field = this.state.fiels;
@@ -78,19 +80,15 @@ class SearchInstitution extends React.Component {
                     <br/>
 
 
-                    <Link to ={{
+                    <Link to ={{//Linking to search results
                         pathname: "/searchResults",
                         state:{
                             name: "Hello"
                         }
-
                     }} >
                         <input type="submit"/>
                     </Link>
-
-
                 </form>
-
             </div>
             )
         }

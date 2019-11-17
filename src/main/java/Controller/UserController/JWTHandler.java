@@ -13,6 +13,12 @@ import javax.ws.rs.NotAuthorizedException;
 import java.security.Key;
 import java.util.Calendar;
 
+
+/*
+This JWT Handler have been written by christian budtz.
+https://github.com/cbudtz/Devops01a/blob/master/src/main/java/rest/JWTHandler.java
+ */
+
 public class JWTHandler{
 
     private static Key key;

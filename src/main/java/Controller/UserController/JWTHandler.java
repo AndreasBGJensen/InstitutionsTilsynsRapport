@@ -1,16 +1,17 @@
 package Controller.UserController;
 
+
 import Model.DTO.User.UserDTO;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 
 import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Calendar;
 
+public class JWTHandler{
 
-public class JWTHandler {
     private static Key key;
     private static final int TOKEN_EXPIRY = 2880; //2 days
 
@@ -37,6 +38,35 @@ public class JWTHandler {
             }
         }
         return key;
+    }
+
+    public static UserDTO validateToken(String tokenString) {
+        Claims claims = null;
+        try{
+            claims =
+                    Jwts.parser()
+                            .setSigningKey(key)
+                            .parseClaimsJws(tokenString)
+                            .getBody();
+            if(claims != null) {
+                UserDTO user = new UserDTO();
+                //TODO: Hvordan får jeg de enkelte dele ud????
+                System.out.println(claims.get("user").toString());
+                System.out.println(claims.get("roles"));
+                System.out.println(claims.getSubject());
+                System.out.println(claims.getSubject());
+                return user;
+            }
+
+        } catch (ExpiredJwtException | UnsupportedJwtException |
+                MalformedJwtException | SignatureException
+                | IllegalArgumentException e) {
+            // Do something with those exceptions!
+
+        }
+
+        return null;
+
     }
 
 }

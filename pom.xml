@@ -62,6 +62,19 @@
 
         <!--        Til Rest-->
         <!-- Rest Spec -->
+        <!--Embedded Tomcat-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <!-- JSP - to shut up Tomcat -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+        <!-- Rest Spec -->
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
@@ -85,6 +98,13 @@
             <artifactId>jersey-hk2</artifactId>
             <version>2.27</version>
         </dependency>
+        <!-- Json mapper -->
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.25</version>
+        </dependency>
         <!-- Old school xml bindings to shut up tomcat -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -97,6 +117,8 @@
             <artifactId>activation</artifactId>
             <version>1.1</version>
         </dependency>
+
+
 
         <!--junit-->
         <dependency>
@@ -152,6 +174,11 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>0.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
         </dependency>
 
     </dependencies>

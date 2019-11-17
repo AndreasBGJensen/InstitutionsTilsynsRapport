@@ -27,7 +27,7 @@ export class TokenStore {
             (response)=> {
                 response.text().then(
                     (token)=> {
-                        console.log("Got Token: " + token)
+                        console.log("Got Token: " + token);
                         this.token=token;
                         localStorage.setItem("girafToken",token);
                         this.state=Loginstates.LOGGED_IN;}

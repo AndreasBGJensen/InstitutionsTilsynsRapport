@@ -27,11 +27,11 @@ public class LoginService {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
     @Path("tokentest")
-    public UserDTO postToken(String token){
-        UserDTO validate = JWTHandler.validateToken(token);
-        return validate;
+    public Response postToken(String token){
+        UserDTO validate = JWTHandler.validate(token);
+        return Response.ok().entity(validate.toString()).build();
     }
 
 }

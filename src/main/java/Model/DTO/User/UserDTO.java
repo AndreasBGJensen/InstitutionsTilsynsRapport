@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class UserDTO implements IUserDTO{
     @MongoObjectId
     private String _id;
-    private String userID;
+    private String userId;
     private String username;
     private String name;
     private String email;
@@ -23,7 +23,7 @@ public class UserDTO implements IUserDTO{
     public UserDTO(String user, String name, String userId){
     this.username=user;
     this.name =name;
-    this.userID = userId;
+    this.userId = userId;
 }
 
     public UserDTO(String username, String roles) {
@@ -45,7 +45,7 @@ public class UserDTO implements IUserDTO{
 
     @Override
     public String getUserID(){
-        return userID;
+        return userId;
     }
 
 

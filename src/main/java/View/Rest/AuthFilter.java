@@ -6,9 +6,9 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
-
+    //This class is automatically called along CORS filter when the rest api is called
     @Provider
-    @Priority(1000) //For at CORS filter bliver kørt først.
+    @Priority(1000)
     public class AuthFilter implements ContainerRequestFilter {
 
         @Override

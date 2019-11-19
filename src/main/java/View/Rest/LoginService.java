@@ -18,6 +18,7 @@ public class LoginService {
 
     @POST
     public Response postLoginData(LoginData login){
+
         if (login!=null && "brian".equals(login.getUsername()) && "kodeord".equals(login.getPassword())){
             String answer = JWTHandler.generateJwtToken(new UserDTO(login.getUsername(), ""));
             return Response.ok().entity(answer).build();

@@ -181,6 +181,13 @@
             <version>1.18.10</version>
         </dependency>
 
+        <!--Hashing Password-->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+
     </dependencies>
 
     <profiles>

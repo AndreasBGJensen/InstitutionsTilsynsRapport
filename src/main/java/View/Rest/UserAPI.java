@@ -5,6 +5,7 @@ import Controller.UserController.IUserController;
 import Controller.UserController.UserController;
 import View.Rest.Exceptions.NoImplementationException;
 import View.Rest.Exceptions.NoImplementationExceptionMapper;
+import View.Rest.Exceptions.NotFoundException;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -47,11 +48,11 @@ public class UserAPI {
      return   controlle.deleteUser(id);
     }
 
-    //TODO:Christian, hvordan er det nu det er med throws NoImplementationException, hvorfor skal den throwes - hvorfor bliver den ikke throwet?
+    //TODO:Hvordan er det nu det er med throws NoImplementationException, hvorfor skal den throwes - hvorfor bliver den ikke throwet?
     @GET
     @Path("/getKGardenQuery")
-    public Response getKGQuery(@QueryParam("name") String name)throws NoImplementationException {
-        return new NoImplementationExceptionMapper().toResponse(new NoImplementationException("Kidnergarden-queries not implemented, yetjjiiono"));
+    public Response getKGQuery(@QueryParam("name") String name) throws NotFoundException {
+        throw new NotFoundException();
 
     }
 

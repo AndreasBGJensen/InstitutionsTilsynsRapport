@@ -35,6 +35,5 @@ public class LoginService {
         UserDTO validate = JWTHandler.validate(token);
         return Response.ok().entity(validate.toString()).build();
     }
-
 }
 

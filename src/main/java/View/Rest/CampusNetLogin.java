@@ -28,6 +28,8 @@ public class CampusNetLogin {
                 + cnTicket)
                 .asString()
                 .getBody();
+
+        System.out.println("This is the body " +body);
         return body; //Just return the result for now
     }
 

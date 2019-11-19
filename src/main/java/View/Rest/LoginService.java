@@ -4,6 +4,7 @@ package View.Rest;
 
 import Model.DTO.User.UserDTO;
 import Controller.UserController.JWTHandler;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 import javax.ws.rs.*;
@@ -18,6 +19,7 @@ public class LoginService {
 
     @POST
     public Response postLoginData(LoginData login){
+
 
         if (login!=null && "brian".equals(login.getUsername()) && "kodeord".equals(login.getPassword())){
             String answer = JWTHandler.generateJwtToken(new UserDTO(login.getUsername(), ""));

@@ -7,6 +7,12 @@ import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
     //This class is automatically called along CORS filter when the rest api is called
+
+/*
+Ligesom med CORS-filteret er de muligt at filtrere requests før de overhovedet rammer et endpoint.
+I stedet for at skrive JWTHandler.validate(token) på alle services, kan du istedet fange requests'ne og validere dem alle.
+ Husk at login-services IKKE skal valideres..
+ */
     @Provider
     @Priority(1000)
     public class AuthFilter implements ContainerRequestFilter {

@@ -120,13 +120,13 @@
             <version>3.11.1</version>
         </dependency>
 
-        <!--JONGO for MongoDB-->
+        <!--JONGO for MongoDB--> <!-- TODO: Remove, because this is duplicate, and can not find version 1.4.0 -->
         <!-- https://mvnrepository.com/artifact/org.jongo/jongo -->
-        <dependency>
-            <groupId>org.jongo</groupId>
-            <artifactId>jongo</artifactId>
-            <version>1.4.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.jongo</groupId>-->
+<!--            <artifactId>jongo</artifactId>-->
+<!--            <version>1.4.0</version>-->
+<!--        </dependency>-->
 
         <!--LOMBOK-->
         <dependency>
@@ -153,6 +153,55 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>0.7.0</version>
+        </dependency>
+
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-excelant</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-examples</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.apache.poi.xwpf.converter.core</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <!-- DOCX to PDF -->
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.apache.poi.xwpf.converter.pdf</artifactId>
+            <version>1.0.6</version>
         </dependency>
 
     </dependencies>

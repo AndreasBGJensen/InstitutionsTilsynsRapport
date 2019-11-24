@@ -40,11 +40,11 @@ public class PDFManager {
         this.vuggestuer = vuggestuer;
 
         String ins = "barn/voksenkontakten";
-        String uns2 = "Inklusion�og�f�llesskab  ";
+        String uns2 = "Inklusion og fællesskab  ";
         String uns3 = "Sprogindsatsen";
-        String uns6 = "For�ldresamarbejde";
-        String uns4 = "Sammenh�ng�og�overgange";
-        String uns5 = "Krav om refleksion og metodisk systematik i den p�dagogiske praksis";
+        String uns6 = "Forældresamarbejde";
+        String uns4 = "Sammenhæng og overgange";
+        String uns5 = "Krav om refleksion og metodisk systematik i den pædagogiske praksis";
         kriterier.add(ins);
         kriterier.add(uns2);
         kriterier.add(uns3);

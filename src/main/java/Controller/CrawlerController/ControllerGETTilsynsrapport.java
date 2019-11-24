@@ -22,12 +22,12 @@ public class ControllerGETTilsynsrapport {
 
     public ControllerGETTilsynsrapport(){}
 
-    public Response getTilsynsrapport(String searchAddress, String keyword){
+    public List<Vuggestue> getTilsynsrapport(String searchAddress, String keyword){
 
         vuggestuer = getbaseUrl.getVuggestuer(searchAddress,keyword);
         traversering = new TraverserURL(doc,vuggestuer);    //Adding the links to the vuggestue.
         extractPdf = new PDFManager(vuggestuer);
-        return Response.ok().entity(vuggestuer).build();
+        return vuggestuer;
     }
 
 

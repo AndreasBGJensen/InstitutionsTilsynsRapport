@@ -41,7 +41,10 @@ public class Vuggestue {
 
     }
 
-
+    public String get_id(){ //Konverterer ObjectID'et til en pæn string
+        return _id;
+    }
+    public void set_id(String id){this._id=id;}
     public String getBaseLink() {
         return this.link.get(0);
     }

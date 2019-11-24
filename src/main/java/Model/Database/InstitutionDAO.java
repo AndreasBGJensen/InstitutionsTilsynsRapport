@@ -59,7 +59,7 @@ public class InstitutionDAO implements IInstitutionDAO {
     }
 
     @Override
-    public int checkInstance(String navn){
+    public int checkInstitution(String navn){
 
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
@@ -68,5 +68,16 @@ public class InstitutionDAO implements IInstitutionDAO {
 
 
     }
+
+    @Override
+    public Response removeInstitution(String navn) {
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+        institutioner.remove(navn);
+
+        return Response.ok().build();
+    }
+
 
 }

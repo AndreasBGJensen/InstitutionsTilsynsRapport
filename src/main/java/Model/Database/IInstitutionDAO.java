@@ -16,6 +16,11 @@ public interface IInstitutionDAO {
 
     public Response getAllInstitution(String institutionId);
 
-    public int checkInstance(String navn);
+    public int checkInstitution(String navn);
+
+    public Response removeInstitution(String navn);
+
+
 
 }
+

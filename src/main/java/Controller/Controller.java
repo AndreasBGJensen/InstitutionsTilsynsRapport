@@ -18,6 +18,9 @@ public class Controller {
 
     public Controller(){}
 
+    /*
+    Method inserts all searchresults into the database. If one instance exist it will not be insertet into the database.
+     */
     public Response updateInstitutionQuery(String vejNavn, String postNr){
 
         List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn,postNr);
@@ -26,9 +29,12 @@ public class Controller {
              ) {
 
             //Insures that there will be only one
-            if(database.checkInstance(a.getNavn())!=1) {
+            if(database.checkInstitution(a.getNavn())!=0) {
                 database.createInstitution(a);
                 System.out.println("Added : " + a.toString());
+            }else{
+                database.removeInstitution(a.getNavn());
+                database.createInstitution(a);
             }
         }
 
@@ -36,9 +42,4 @@ public class Controller {
 
 
     }
-
-
-
-
-
 }

@@ -1,7 +1,7 @@
 package Model.Crawler;
 
 import Model.Downloader.DownloadPDF;
-import Model.Vuggestue;
+import Model.DTO.Institutions.Vuggestue;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -15,7 +15,7 @@ public class TraverserURL {
     List<Vuggestue> vuggestuer;
     documentURL doc;
     DownloadPDF pdfWriter = new DownloadPDF();
-    static int i; //TODO: Hvorfor skal denne være global?
+    static int i; //TODO: Hvorfor skal denne vï¿½re global?
 
     ConcurrentHashMap<String,String> existingUrl = new ConcurrentHashMap<String, String>();
     ConcurrentHashMap<String,String> checker = new ConcurrentHashMap<String, String>();
@@ -77,7 +77,7 @@ public class TraverserURL {
 
     }
     /*
-    Filtrere alle mulige mærkelige url fra eks. Mails kalender osv.
+    Filtrere alle mulige mï¿½rkelige url fra eks. Mails kalender osv.
      */
     private boolean urlAccess(String url){
         String[] badKeyWords = {"mail","kalender", "txt"};

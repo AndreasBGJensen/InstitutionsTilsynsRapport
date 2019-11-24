@@ -1,7 +1,8 @@
 package Model.Database;
 
-import Model.DTO.Institutions.Institution;
+
 import Model.DTO.User.UserDTO;
+import Model.DTO.Institutions.Vuggestue;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.json.JSONObject;
@@ -10,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 public class InstitutionDAO implements IInstitutionDAO {
     @Override
-    public Response createInstitution(Institution institution) {
+    public Response createInstitution(Vuggestue institution) {
 
 
             Jongo jongo = new Jongo(MongoConnector.getInstance());
@@ -30,7 +31,7 @@ public class InstitutionDAO implements IInstitutionDAO {
 
         MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
 
-        Institution  institution = institutioner.findOne("{navn: '"+institutionName+"'}").as(Institution.class);
+        Vuggestue  institution = institutioner.findOne("{navn: '"+institutionName+"'}").as(Vuggestue.class);
 
         JSONObject json = new JSONObject(institution.toString());
 

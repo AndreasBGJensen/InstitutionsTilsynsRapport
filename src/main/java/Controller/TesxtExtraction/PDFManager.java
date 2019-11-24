@@ -1,10 +1,10 @@
-package Model.ExtractTextFromPdf;
+package Controller.TesxtExtraction;
 
 import java.io.File;
 import java.io.IOException;
 
-import Model.Indstser;
-import Model.Vuggestue;
+import Model.DTO.Institutions.Indstser;
+import Model.DTO.Institutions.Vuggestue;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -40,11 +40,11 @@ public class PDFManager {
         this.vuggestuer = vuggestuer;
 
         String ins = "barn/voksenkontakten";
-        String uns2 = "Inklusion og fællesskab  ";
+        String uns2 = "Inklusionï¿½ogï¿½fï¿½llesskab  ";
         String uns3 = "Sprogindsatsen";
-        String uns6 = "Forældresamarbejde";
-        String uns4 = "Sammenhæng og overgange";
-        String uns5 = "Krav om refleksion og metodisk systematik i den pædagogiske praksis";
+        String uns6 = "Forï¿½ldresamarbejde";
+        String uns4 = "Sammenhï¿½ngï¿½ogï¿½overgange";
+        String uns5 = "Krav om refleksion og metodisk systematik i den pï¿½dagogiske praksis";
         kriterier.add(ins);
         kriterier.add(uns2);
         kriterier.add(uns3);
@@ -114,12 +114,12 @@ private void getIndsatser(){
 
                     for (int i = 0; i < testIndex.length; i++) {
                         String test = testIndex[i];
-                        if (test.contains("Krav om refleksion") || test.contains("Krav om refleksion og")
-                                || test.contains(" Inklusion og fællesskab ") || test.contains("Inklusion og fællesskab") || test.contains("Inklusion og faellesskab") || test.contains("Inklusion og fællesskab")
-                                || test.contains("Forældresamarbejde") || test.contains("Foraeldresamarbejde")
-                                || test.contains(" Sammenhæng og overgange") || test.contains("Sammenhæng og overgange") || test.contains("Sammenhaeng og") || test.contains("Sammenhæng og overgange") || test.contains(" Sammenhæng og ") || test.contains("Sammenhang og")
-                                || test.contains("Sprogindsatsen")
-                                || test.contains("barn/voksenkontakten")) {
+                        if (test.contains("Krav om refleksion") || test.contains("Krav om refleksion og")||test.contains("Refleksion og metodisk systematik")
+                                || test.contains(" Inklusion og fÃ¦llesskab ") || test.contains("Inklusion og fÃ¦llesskab") || test.contains("Inklusion og faellesskab") || test.contains("Inklusion og fÃ¦llesskab")
+                                || test.contains("ForÃ¦ldresamarbejde") || test.contains("Foraeldresamarbejde")
+                                || test.contains(" SammenhÃ¦ng og overgange") || test.contains("SammenhÃ¦ng og overgange") || test.contains("Sammenhaeng og") || test.contains("SammenhÃ¦ng og overgange") || test.contains(" SammenhÃ¦ng og ") || test.contains("Sammenhang og")
+                                || test.contains("Sprogindsatsen")||test.contains("Sprogindsats")||test.contains("Sprogindsat")
+                                || test.contains("barn/voksenkontakten")||test.contains("Sociale relationer â€“ barn/voksen kontakten"))  {
                             System.out.println();
 
                             for (int j = i; j < j + 17; j++) {
@@ -128,7 +128,7 @@ private void getIndsatser(){
                                 if (j == testIndex.length) {
                                     break;
                                 }
-                                if (testIndex[j].contains("Vedligeholdelse af indsats") || testIndex[j].contains("Tilpasning af indsats") || testIndex[j].contains("Indsats Behov for ny/ændret indsats")) {
+                                if (testIndex[j].contains("Vedligeholdelse af indsats") || testIndex[j].contains("Tilpasning af indsats") || testIndex[j].contains("Indsats Behov for ny/ï¿½ndret indsats")) {
                                     System.out.println("\t\t" + testIndex[j]);
                                     indsats.addIndsats(testIndex[i], testIndex[j]);
                                     break;
@@ -160,18 +160,19 @@ private void getIndsatser(){
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\kaalormen\\OCRTilsyn 2018.pdf");//Virker OCR behandlet
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\kaalormen\\OCRTilsynsrapport.pdf");//Virker OCR behandlet
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\dronninglouisesasyl\\Tilsynsrapport 2018.pdf");//Virker
-        pdfManager.setFilePath("C:\\Uddannelse\\Institution\\fix-karreen\\Tilsyn 2019.pdf");//Virker
+        //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\fix-karreen\\Tilsyn 2019.pdf");//Virker
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\cismofytten\\tilsynsrapport 2019.pdf");//Virker
-        //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\cismofytten\\tilsynsrapport 2017.pdf");//Virker i første forsøg
+        //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\cismofytten\\tilsynsrapport 2017.pdf");//Virker i fï¿½rste forsï¿½g
         //pdfManager.setFilePath("C:\\Uddannelse\\ASPRISE\\\\asprise-ocr-2019_11_12-19_52_57_539.pdf");//Fil er OCR og er testet og virker
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\dengroennegiraf\\Tilsyns rapport.pdf");//Test virker med denne metode;
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\carolinehaven\\Tilsynsrapport 2018.pdf");//Test virker med denne metode
-
+        //pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\klerkegade\\191031 ny tilsyn Klerkegade (002).pdf");//Test virker med denne metode
+        pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\kongehatten\\PÃ¦dagogisk tilsyn 2019.pdf");//Test virker med denne metode
 
 
 
         try {
-            //String text = resultFromOcr;//Forsøg med tess4J
+            //String text = resultFromOcr;//Forsï¿½g med tess4J
             String text = pdfManager.toText();
             pdfManager.setFilePath(text);
             //pdfManager.indsatsExist(text);
@@ -183,12 +184,12 @@ private void getIndsatser(){
 
             for(int i=0;i<testIndex.length;i++){
                 String test = testIndex[i];
-                if(test.contains("Krav om refleksion")||test.contains("Krav om refleksion og")
-                        ||test.contains(" Inklusion og fællesskab ")||test.contains("Inklusion og fællesskab")||test.contains("Inklusion og faellesskab")||test.contains("Inklusion og fællesskab")
-                        ||test.contains("Forældresamarbejde")||test.contains("Foraeldresamarbejde")
-                        ||test.contains(" Sammenhæng og overgange")||test.contains("Sammenhæng og overgange")||test.contains("Sammenhaeng og")||test.contains("Sammenhæng og overgange")||test.contains(" Sammenhæng og ")||test.contains("Sammenhang og")
-                        ||test.contains("Sprogindsatsen")
-                        ||test.contains("barn/voksenkontakten")){
+                if(test.contains("Krav om refleksion") || test.contains("Krav om refleksion og")||test.contains("Refleksion og metodisk systematik")
+                        || test.contains(" Inklusion og fÃ¦llesskab ") || test.contains("Inklusion og fÃ¦llesskab") || test.contains("Inklusion og faellesskab") || test.contains("Inklusion og fÃ¦llesskab")
+                        || test.contains("ForÃ¦ldresamarbejde") || test.contains("Foraeldresamarbejde")
+                        || test.contains(" SammenhÃ¦ng og overgange") || test.contains("SammenhÃ¦ng og overgange") || test.contains("Sammenhaeng og") || test.contains("SammenhÃ¦ng og overgange") || test.contains(" SammenhÃ¦ng og ") || test.contains("Sammenhang og")
+                        || test.contains("Sprogindsatsen")||test.contains("Sprogindsats")||test.contains("Sprogindsat")
+                        || test.contains("barn/voksenkontakten")||test.contains("Sociale relationer â€“ barn/voksen kontakten"))  {
                 System.out.println(testIndex[i]);
 
 
@@ -198,7 +199,7 @@ private void getIndsatser(){
                     if(j==testIndex.length){
                         break;
                     }
-                    if(testIndex[j].contains("Vedligeholdelse af indsats")||testIndex[j].contains("Tilpasning af indsats")||testIndex[j].contains("Indsats Behov for ny/ændret indsats")){
+                    if(testIndex[j].contains("Vedligeholdelse af indsats")||testIndex[j].contains("Tilpasning af indsats")||testIndex[j].contains("Indsats Behov for ny/Ã¦ndret indsats")){
                         System.out.println("\t\t"+testIndex[j]);
                         break;
                     }
@@ -210,9 +211,9 @@ private void getIndsatser(){
             }
 
 
-/*||test.contains(" Inklusion og fællesskab ")||test.contains("Inklusion og fællesskab")
-                    ||test.contains("Forældresamarbejde")
-                    ||test.contains(" Sammenhæng og overgange")||test.contains("Sammenhæng og overgange")*/
+/*||test.contains(" Inklusion og fï¿½llesskab ")||test.contains("Inklusionï¿½ogï¿½fï¿½llesskab")
+                    ||test.contains("Forï¿½ldresamarbejde")
+                    ||test.contains(" Sammenhï¿½ng og overgange")||test.contains("Sammenhï¿½ngï¿½ogï¿½overgange")*/
 
         } catch (IOException ex) {
             Logger.getLogger(PDFManager.class.getName()).log(Level.SEVERE, null, ex);

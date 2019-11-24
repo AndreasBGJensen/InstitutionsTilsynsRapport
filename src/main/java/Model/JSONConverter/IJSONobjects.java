@@ -1,6 +1,6 @@
 package Model.JSONConverter;
 
-import Model.DTO.Institutions.Institution;
+
 import Model.DTO.User.UserDTO;
 import org.json.JSONObject;
 

@@ -1,7 +1,7 @@
 package Model.Downloader;
 
-import Model.ExtractTextFromPdf.OCR;
-import Model.Vuggestue;
+import Controller.TesxtExtraction.OCR;
+import Model.DTO.Institutions.Vuggestue;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,7 +20,7 @@ public class DownloadPDF {
 
         String nyfilename=filename.concat(endFileType(filename));
         nyfilename=cleanUpFilename(nyfilename);
-        //Indsætter file og pathname til senere brug
+        //Indsï¿½tter file og pathname til senere brug
         vuggestue.addTilsynsPath("./"+path+"/"+nyfilename);
       try {
           createDirectory(path);

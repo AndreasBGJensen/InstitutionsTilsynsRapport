@@ -1,6 +1,6 @@
 package Controller.TesxtExtraction;
 
-import Model.Vuggestue;
+import Model.DTO.Institutions.Vuggestue;
 import com.asprise.ocr.Ocr;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;

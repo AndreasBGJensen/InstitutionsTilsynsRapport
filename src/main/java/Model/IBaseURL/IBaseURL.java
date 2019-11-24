@@ -1,6 +1,6 @@
 package Model.IBaseURL;
 
-import Model.Vuggestue;
+import Model.DTO.Institutions.Vuggestue;
 
 import java.util.List;
 

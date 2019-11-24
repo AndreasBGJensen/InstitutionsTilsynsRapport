@@ -1,4 +1,4 @@
-package Model;
+package Model.DTO.Institutions;
 
 import java.util.HashMap;
 

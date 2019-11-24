@@ -114,6 +114,8 @@ private void getIndsatser(){
 
                     for (int i = 0; i < testIndex.length; i++) {
                         String test = testIndex[i];
+
+                        //This filters all the kriteria
                         if (test.contains("Krav om refleksion") || test.contains("Krav om refleksion og")||test.contains("Refleksion og metodisk systematik")
                                 || test.contains(" Inklusion og fællesskab ") || test.contains("Inklusion og fællesskab") || test.contains("Inklusion og faellesskab") || test.contains("Inklusion og fællesskab")
                                 || test.contains("Forældresamarbejde") || test.contains("Foraeldresamarbejde")
@@ -128,7 +130,11 @@ private void getIndsatser(){
                                 if (j == testIndex.length) {
                                     break;
                                 }
-                                if (testIndex[j].contains("Vedligeholdelse af indsats") || testIndex[j].contains("Tilpasning af indsats") || testIndex[j].contains("Indsats Behov for ny/�ndret indsats")) {
+
+                                //This filtrates alle the status remarks
+                                if (testIndex[j].contains("Vedligeholdelse af indsats")||
+                                        testIndex[j].contains("Tilpasning af indsats")||testIndex[j].contains("tilpasning af indsats")||
+                                        testIndex[j].contains("Indsats Behov for ny/ændret indsats")||testIndex[j].contains("behov for ny og ændre indsats")) {
                                     System.out.println("\t\t" + testIndex[j]);
                                     indsats.addIndsats(testIndex[i], testIndex[j]);
                                     break;
@@ -141,6 +147,7 @@ private void getIndsatser(){
                     }
                     if(a.getIndsats(h).getIndsatser().size()==0){
                         OCR.CreatePdfWithTextDemo(a,h);
+                        h=h-1;
                     }
 
                 } catch (IOException ex) {
@@ -167,8 +174,8 @@ private void getIndsatser(){
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\dengroennegiraf\\Tilsyns rapport.pdf");//Test virker med denne metode;
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\carolinehaven\\Tilsynsrapport 2018.pdf");//Test virker med denne metode
         //pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\klerkegade\\191031 ny tilsyn Klerkegade (002).pdf");//Test virker med denne metode
-        pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\kongehatten\\Pædagogisk tilsyn 2019.pdf");//Test virker med denne metode
-
+       // pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\kongehatten\\Pædagogisk tilsyn 2019.pdf");//Test virker med denne metode
+       // pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\boernejunglen\\Tilsynsrapport 2017.pdf");
 
 
         try {
@@ -193,13 +200,15 @@ private void getIndsatser(){
                 System.out.println(testIndex[i]);
 
 
-                for(int j = i;j<j+17;j++){
+                for(int j = i;j<j+testIndex.length;j++){
 
                     //Ensure that we do not have a index out of bound exception
                     if(j==testIndex.length){
                         break;
                     }
-                    if(testIndex[j].contains("Vedligeholdelse af indsats")||testIndex[j].contains("Tilpasning af indsats")||testIndex[j].contains("Indsats Behov for ny/ændret indsats")){
+                    if(testIndex[j].contains("Vedligeholdelse af indsats")||
+                            testIndex[j].contains("Tilpasning af indsats")||testIndex[j].contains("tilpasning af indsats")||
+                            testIndex[j].contains("Indsats Behov for ny/ændret indsats")||testIndex[j].contains("behov for ny og ændre indsats")){
                         System.out.println("\t\t"+testIndex[j]);
                         break;
                     }

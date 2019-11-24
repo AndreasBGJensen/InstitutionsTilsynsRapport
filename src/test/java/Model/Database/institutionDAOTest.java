@@ -59,4 +59,18 @@ public class institutionDAOTest {
         assertEquals(300, response.getStatus());
     }
 
+
+    @Test
+    public void checkInstanceTest(){
+
+        Vuggestue testInstitution = new Vuggestue("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+        institutionDAO.createInstitution(testInstitution);
+        int result = institutionDAO.checkInstance(testInstitution.getNavn());
+
+        assertEquals(1,result);
+
+
+
+    }
+
 }

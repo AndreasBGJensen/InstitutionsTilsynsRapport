@@ -58,5 +58,15 @@ public class InstitutionDAO implements IInstitutionDAO {
         return null;
     }
 
+    @Override
+    public int checkInstance(String navn){
+
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+        return (int)institutioner.count("{navn: '"+navn+"'}");
+
+
+    }
 
 }

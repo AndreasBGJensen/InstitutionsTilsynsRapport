@@ -23,10 +23,16 @@ public class Controller {
         List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn,postNr);
 
         for (Vuggestue a:respons
-             ) {database.createInstitution(a);
-            System.out.println("Added : "+ a.toString());
+             ) {
+
+            //Insures that there will be only one
+            if(database.checkInstance(a.getNavn())!=1) {
+                database.createInstitution(a);
+                System.out.println("Added : " + a.toString());
+            }
         }
-return Response.ok().entity("Database updated").build();
+
+    return Response.ok().entity("Database updated").build();
 
 
     }

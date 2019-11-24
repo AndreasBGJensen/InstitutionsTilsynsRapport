@@ -60,4 +60,9 @@ public class UserController implements IUserController, IInstitutionDAO {
     public Response getAllInstitution(String institutionId) {
         return null;
     }
+
+    @Override
+    public int checkInstance(String navn) {
+        return 0;
+    }
 }

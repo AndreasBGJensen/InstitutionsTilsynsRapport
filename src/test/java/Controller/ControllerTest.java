@@ -32,4 +32,23 @@ Controller control = new Controller();
 
 
 }
+@Test
+public void getUserSearchInstitutionsFromDatabaseTest(){
+
+    String[] vejNavn ={"Mimersgade","Olfert Fischers Gade"};
+
+    String[] postNr = {"2200","1311"};
+
+    Response respons;
+
+    for(int i = 0; i<vejNavn.length;i++) {
+        respons= control.getUserSearchInstitutionsFromDatabase(vejNavn[i],postNr[i]);
+
+       String result = respons.getEntity().toString();
+        System.out.println(result);
+    }
+
+
+
+}
 }

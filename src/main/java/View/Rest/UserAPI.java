@@ -1,6 +1,7 @@
 package View.Rest;
 
 
+import Controller.Controller;
 import Controller.UserController.IUserController;
 import Controller.UserController.UserController;
 import View.Rest.Exceptions.NoImplementationException;
@@ -17,7 +18,7 @@ import javax.ws.rs.core.Response;
 public class UserAPI {
 
     IUserController controlle = new UserController();
-
+ Controller controller = new Controller();
 
 
     @POST
@@ -49,6 +50,8 @@ public class UserAPI {
     @GET
     @Path("/getKGardenQuery")
     public Response getKGQuery(@QueryParam("name") String name)throws NoImplementationException {
+
+
         return new NoImplementationExceptionMapper().toResponse(new NoImplementationException("Kidnergarden-queries not implemented, yetjjiiono"));
 
     }

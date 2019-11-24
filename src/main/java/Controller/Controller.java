@@ -4,6 +4,7 @@ import Controller.CrawlerController.ControllerGETTilsynsrapport;
 import Model.DTO.Institutions.Vuggestue;
 import Model.Database.IInstitutionDAO;
 import Model.Database.InstitutionDAO;
+import org.json.JSONObject;
 
 import javax.ws.rs.core.Response;
 
@@ -41,5 +42,21 @@ public class Controller {
     return Response.ok().entity("Database updated").build();
 
 
+    }
+
+    public Response getUserSearchInstitutionsFromDatabase(String vejNavn, String postNr){
+        List<Vuggestue> institutionList =crawler.getInstitutions(vejNavn,postNr);
+        JSONObject json = new JSONObject();
+
+        for (Vuggestue a:institutionList
+             ) {
+            Response response = database.getInstitution(a.getNavn());
+            String institution = response.getEntity().toString();
+            json.put(a.getNavn(),institution);
+        }
+
+        System.out.println(json.toString());
+
+        return Response.ok().entity(json.toString()).build();
     }
 }

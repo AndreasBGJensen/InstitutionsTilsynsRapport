@@ -3,6 +3,7 @@ package Model.Database;
 
 import Model.DTO.User.UserDTO;
 import Model.DTO.Institutions.Vuggestue;
+import com.google.gson.JsonObject;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.json.JSONObject;

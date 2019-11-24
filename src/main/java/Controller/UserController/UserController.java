@@ -62,7 +62,14 @@ public class UserController implements IUserController, IInstitutionDAO {
     }
 
     @Override
-    public int checkInstance(String navn) {
+    public int checkInstitution(String navn) {
         return 0;
     }
+
+    @Override
+    public Response removeInstitution(String navn) {
+        return null;
+    }
+
+
 }

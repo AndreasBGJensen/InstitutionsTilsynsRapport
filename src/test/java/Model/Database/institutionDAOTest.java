@@ -65,7 +65,7 @@ public class institutionDAOTest {
 
         Vuggestue testInstitution = new Vuggestue("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
         institutionDAO.createInstitution(testInstitution);
-        int result = institutionDAO.checkInstance(testInstitution.getNavn());
+        int result = institutionDAO.checkInstitution(testInstitution.getNavn());
 
         assertEquals(1,result);
 

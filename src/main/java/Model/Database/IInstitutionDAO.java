@@ -10,7 +10,7 @@ public interface IInstitutionDAO {
 
     public Response createInstitution(Vuggestue institution);
 
-    public Response getInstitution(String institutionId);
+    public Response getInstitution(String institutionName);
 
     public Response updateInstitution(String institutionId);
 

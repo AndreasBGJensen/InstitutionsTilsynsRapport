@@ -30,6 +30,10 @@ public class ControllerGETTilsynsrapport {
         return vuggestuer;
     }
 
+    public List<Vuggestue> getInstitutions(String searchAddress, String keyword){
+        return vuggestuer = getbaseUrl.getVuggestuer(searchAddress,keyword);
+    }
+
 
 
 

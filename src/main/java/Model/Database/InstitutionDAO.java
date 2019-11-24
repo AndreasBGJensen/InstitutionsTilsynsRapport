@@ -21,8 +21,6 @@ public class InstitutionDAO implements IInstitutionDAO {
             users.save(institution);
 
             return Response.ok().build(); // Return a response
-
-
     }
 
     @Override

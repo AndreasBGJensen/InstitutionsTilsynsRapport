@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 public class Vuggestue {
     @MongoId
-    @MongoObjectId
     private String _id;
     private String navn = "";
     private String adresse = "";
@@ -19,11 +18,34 @@ public class Vuggestue {
     private String tlf = "";
     private String venteliste = "";
     private ArrayList<String> link = new ArrayList<String>();
-
     private ArrayList<String> tilsynsPath= new ArrayList<>();
     private ArrayList<Indstser> indstsers = new ArrayList<>();
 
+    public Vuggestue(JSONObject json){
+        this.setNavn((String)json.get("navn"));
+        this.setAdresse((String)json.get("adresse"));
+        this.setTlf((String)json.get("tlf"));
+        this.setVenteliste((String)json.get("venteliste"));
+        this.setÅbningstider((String)json.get("åbningstider"));
 
+        JSONArray arr = json.getJSONArray("link");
+
+        for (int i = 0; i < arr.length(); i++) {
+            this.addLink(arr.get(i).toString());
+        }
+
+        JSONArray path = json.getJSONArray("tilsynsPath");
+        for (int i = 0; i < path.length(); i++) {
+            this.addTilsynsPath(path.get(i).toString());
+        }
+
+        JSONArray indsatser = json.getJSONArray("indstsers");
+        for (int i = 0; i < path.length(); i++) {
+            Indstser a = new Indstser(indsatser.getJSONObject(i));
+            this.addIndsts(a);
+        }
+
+    }
 
 
    public Vuggestue(String navn, String adresse, String åbningstider, String tlf, String venteliste, String link) {
@@ -44,20 +66,7 @@ public class Vuggestue {
 
     }
 
-    public Vuggestue(JSONObject json){
-        this.setNavn((String)json.get("navn"));
-        this.setAdresse((String)json.get("adresse"));
-        this.setTlf((String)json.get("tlf"));
-        this.setVenteliste((String)json.get("venteliste"));
-        this.setÅbningstider((String)json.get("åbningstider"));
 
-        JSONArray arr = json.getJSONArray("link");
-
-        for (int i = 0; i < arr.length(); i++) {
-            this.addLink(arr.get(i).toString());
-        }
-
-    }
 
 
     public void setAdresse(String adresse) {
@@ -94,10 +103,10 @@ public class Vuggestue {
 
 
 
-    public String getId(){ //Konverterer ObjectID'et til en pæn string
+    public String getID(){ //Konverterer ObjectID'et til en pæn string
         return _id;
     }
-    public void setId(String id){this._id=id;}
+    public void setID(String id){this._id=id;}
     public String getBaseLink() {
         return this.link.get(0);
     }

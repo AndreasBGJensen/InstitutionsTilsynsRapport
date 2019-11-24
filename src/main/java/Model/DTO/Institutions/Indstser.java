@@ -1,5 +1,7 @@
 package Model.DTO.Institutions;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 public class Indstser {
@@ -9,6 +11,12 @@ public class Indstser {
 
 
     public Indstser(){}
+
+    public Indstser(JSONObject json){
+        this.setIndsatser((HashMap)json.get("indstsers"));
+        this.setTilsyn((String)json.get("tilsyn"));
+
+    }
 
     public void addIndsats(String beskrivelse, String indsats){
         indsatser.put(beskrivelse,indsats);
@@ -21,4 +29,10 @@ public class Indstser {
     public HashMap<String, String> getIndsatser(){
         return indsatser;
     }
+
+    public void setIndsatser(HashMap<String, String> indsatser) {
+        this.indsatser = indsatser;
+    }
+
+
 }

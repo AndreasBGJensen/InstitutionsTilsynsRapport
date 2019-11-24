@@ -2,6 +2,8 @@ package Model.DTO.Institutions;
 
 import org.jongo.marshall.jackson.oid.MongoObjectId;
 import org.jongo.marshall.jackson.oid.ObjectId;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,10 +43,60 @@ public class Vuggestue {
 
     }
 
-    public String get_id(){ //Konverterer ObjectID'et til en pæn string
+    public Vuggestue(JSONObject json){
+        this.setNavn((String)json.get("navn"));
+        this.setAdresse((String)json.get("adresse"));
+        this.setTlf((String)json.get("tlf"));
+        this.setVenteliste((String)json.get("venteliste"));
+        this.setÅbningstider((String)json.get("åbningstider"));
+
+        JSONArray arr = json.getJSONArray("link");
+
+        for (int i = 0; i < arr.length(); i++) {
+            this.addLink(arr.get(i).toString());
+        }
+
+    }
+
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public void setÅbningstider(String åbningstider) {
+        this.åbningstider = åbningstider;
+    }
+
+    public void setTlf(String tlf) {
+        this.tlf = tlf;
+    }
+
+    public void setVenteliste(String venteliste) {
+        this.venteliste = venteliste;
+    }
+
+    public void setLink(ArrayList<String> link) {
+        this.link = link;
+    }
+
+    public void setTilsynsPath(ArrayList<String> tilsynsPath) {
+        this.tilsynsPath = tilsynsPath;
+    }
+
+    public void setIndstsers(ArrayList<Indstser> indstsers) {
+        this.indstsers = indstsers;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
+
+
+    public String getId(){ //Konverterer ObjectID'et til en pæn string
         return _id;
     }
-    public void set_id(String id){this._id=id;}
+    public void setId(String id){this._id=id;}
     public String getBaseLink() {
         return this.link.get(0);
     }

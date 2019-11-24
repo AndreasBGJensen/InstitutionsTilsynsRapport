@@ -1,4 +1,4 @@
-package Model.ExtractTextFromPdf;
+package Controller.TesxtExtraction;
 
 import Model.Vuggestue;
 import com.asprise.ocr.Ocr;

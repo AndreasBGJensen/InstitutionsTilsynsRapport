@@ -1,5 +1,6 @@
 package Model.DTO.Institutions;
 
+import org.jongo.marshall.jackson.oid.MongoId;
 import org.jongo.marshall.jackson.oid.MongoObjectId;
 import org.jongo.marshall.jackson.oid.ObjectId;
 import org.json.JSONArray;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Vuggestue {
-
+    @MongoId
     @MongoObjectId
     private String _id;
     private String navn = "";

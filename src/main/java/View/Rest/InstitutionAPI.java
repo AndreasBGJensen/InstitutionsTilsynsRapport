@@ -1,22 +1,30 @@
 package View.Rest;
 import Controller.Controller;
-import Controller.UserController.IUserController;
-import Controller.UserController.UserController;
-import View.Rest.Exceptions.NoImplementationException;
-import View.Rest.Exceptions.NoImplementationExceptionMapper;
+
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-@Path("mongo/institutions")
+import static javax.ws.rs.core.Response.Status.PRECONDITION_FAILED;
+
+
+@Path("/institution")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class InstitutionAPI {
 
     Controller controller = new Controller();
 
-    GET
+    @POST
+    public Response postLoginData(SearchParam search){
+
+        try {
+            return Response.ok().entity(controller.getUserSearchInstitutionsFromDatabase(search.getVejnavn(), search.getPostNr())).build();
+        }catch (Exception e) {
+            return Response.status(PRECONDITION_FAILED).entity(new NotAuthorizedException("forkert brugernavn/kodeord")).build();
+        }
+        }
 
 }

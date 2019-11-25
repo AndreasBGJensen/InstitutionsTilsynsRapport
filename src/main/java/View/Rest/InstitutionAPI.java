@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import static javax.ws.rs.core.Response.Status.PRECONDITION_FAILED;
 
 
-@Path("/institution")
+@Path("institution")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class InstitutionAPI {

@@ -10,7 +10,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/*
+TODO: Organize this class so that it only relys on Lombok: Problem When using Lombok
+it will not instanciate Arraylists if it is not present in the build.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

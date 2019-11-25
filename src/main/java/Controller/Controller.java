@@ -51,12 +51,12 @@ public class Controller {
         for (Vuggestue a:institutionList
              ) {
             Response response = database.getInstitution(a.getNavn());
-            String institution = response.getEntity().toString();
-            json.put(a.getNavn(),institution);
+            Vuggestue vuggestue = (Vuggestue) response.getEntity();
+            json.put(vuggestue.getNavn(),vuggestue);
         }
 
         System.out.println(json.toString());
 
-        return Response.ok().entity(json.toString()).build();
+        return Response.ok().entity(json).build();
     }
 }

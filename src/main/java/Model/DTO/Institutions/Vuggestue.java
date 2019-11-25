@@ -1,5 +1,6 @@
 package Model.DTO.Institutions;
 
+import lombok.*;
 import org.jongo.marshall.jackson.oid.MongoId;
 import org.jongo.marshall.jackson.oid.MongoObjectId;
 import org.jongo.marshall.jackson.oid.ObjectId;
@@ -9,6 +10,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 public class Vuggestue {
     @MongoId
     private String _id;
@@ -143,7 +150,7 @@ public class Vuggestue {
     }
 
 
-    @Override
+
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append("{navn: " + navn).append(", ").append("adresse: "+adresse).append(", ").append("aabningstider:" +åbningstider).append(", ").append("telefon:" +tlf).append(", ").append("venteliste: "+venteliste).append(", ").append("link:" +link+"}");

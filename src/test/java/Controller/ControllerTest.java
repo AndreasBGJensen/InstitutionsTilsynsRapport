@@ -1,6 +1,9 @@
 package Controller;
 
 import Controller.CrawlerController.ControllerGETTilsynsrapport;
+import Model.DTO.Institutions.Vuggestue;
+import com.mongodb.util.JSON;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.core.Response;
@@ -39,13 +42,25 @@ public void getUserSearchInstitutionsFromDatabaseTest(){
 
     String[] postNr = {"2200","1311"};
 
+    JSONObject json = new JSONObject();
+
     Response respons;
 
     for(int i = 0; i<vejNavn.length;i++) {
-        respons= control.getUserSearchInstitutionsFromDatabase(vejNavn[i],postNr[i]);
 
-       String result = respons.getEntity().toString();
-        System.out.println(result);
+        try{
+        respons = control.getUserSearchInstitutionsFromDatabase(vejNavn[i], postNr[i]);
+
+
+
+        json.put("Search result", respons.getEntity());
+
+        System.out.println(json.toString());
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+
+
     }
 
 

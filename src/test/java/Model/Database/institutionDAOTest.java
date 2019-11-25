@@ -3,6 +3,7 @@ package Model.Database;
 import Model.DTO.Institutions.Vuggestue;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.core.Response;
@@ -34,9 +35,11 @@ public class institutionDAOTest {
         Vuggestue testInstitution = new Vuggestue("Test","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
         institutionDAO.createInstitution(testInstitution);
-        Response response = institutionDAO.getInstitution("Test");
-        Vuggestue test =  (Vuggestue)response.getEntity();
+        Response response = institutionDAO.getInstitution("Den Grønne Giraf");
 
+        Vuggestue test =  (Vuggestue)response.getEntity();
+        JSONObject json = new JSONObject();
+        json.put(test.getNavn(),test);
         assertEquals(test.toString(),testInstitution.toString());
         assertEquals(200,response.getStatus());
 

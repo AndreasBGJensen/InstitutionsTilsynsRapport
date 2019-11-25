@@ -19,7 +19,7 @@ public class InstitutionAPI {
 
     @POST
     public Response postLoginData(SearchParam search){
-
+        System.out.println(search.toString());
         try {
             return Response.ok().entity(controller.getUserSearchInstitutionsFromDatabase(search.getVejnavn(), search.getPostNr())).build();
         }catch (Exception e) {

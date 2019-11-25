@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 public class UserAPI {
 
     IUserController controlle = new UserController();
- Controller controller = new Controller();
+
 
 
     @POST

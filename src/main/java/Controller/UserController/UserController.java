@@ -1,10 +1,11 @@
 package Controller.UserController;
 
-import Model.DTO.Institutions.Institution;
+
 import Model.Database.IInstitutionDAO;
 import Model.Database.IUserDAO;
 import Model.Database.InstitutionDAO;
 import Model.Database.UserDAO;
+import Model.DTO.Institutions.Vuggestue;
 import org.json.JSONObject;
 
 import javax.ws.rs.core.Response;
@@ -39,7 +40,7 @@ public class UserController implements IUserController, IInstitutionDAO {
     }
 
     @Override
-    public Response createInstitution(Institution institution) {
+    public Response createInstitution(Vuggestue institution) {
         return null;
     }
 
@@ -59,4 +60,16 @@ public class UserController implements IUserController, IInstitutionDAO {
     public Response getAllInstitution(String institutionId) {
         return null;
     }
+
+    @Override
+    public int checkInstitution(String navn) {
+        return 0;
+    }
+
+    @Override
+    public Response removeInstitution(String navn) {
+        return null;
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package Controller.UserController;
+package Controller;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

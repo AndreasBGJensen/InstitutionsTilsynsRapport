@@ -1,4 +1,4 @@
-package Controller;
+package Controller.UserController;
 
 import Model.DTO.Institutions.Institution;
 import Model.Database.IInstitutionDAO;

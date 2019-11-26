@@ -1,8 +1,8 @@
 package View.Rest;
 
 
-import Controller.IUserController;
-import Controller.UserController;
+import Controller.UserController.IUserController;
+import Controller.UserController.UserController;
 import View.Rest.Exceptions.NotFoundException;
 
 import javax.ws.rs.*;

@@ -26,7 +26,7 @@ public class Controller {
 
         List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn,postNr);
 
-        for (Vuggestue a:respons
+      /*  for (Vuggestue a:respons
         ) {
 
             //Insures that there will be only one
@@ -37,7 +37,7 @@ public class Controller {
                 database.removeInstitution(a.getNavn());
                 database.createInstitution(a);
             }
-        }
+        }*/
 
         return Response.ok().entity("Database updated").build();
 

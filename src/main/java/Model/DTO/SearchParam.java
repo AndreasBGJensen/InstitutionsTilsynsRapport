@@ -9,8 +9,8 @@ import lombok.*;
 @ToString
 public class SearchParam {
 
-    String vejnavn;
-    String postNr;
+    private String vejnavn;
+    private String postNr;
 
 
 

@@ -19,9 +19,9 @@ public class InstitutionAPITest {
         request.put("vejnavn","2200");
 
 
-        Response response = api.postLoginData(para);
+       // Response response = api.postLoginData(para);
 
-        System.out.println(response.getEntity().toString());
+     //   System.out.println(response.getEntity().toString());
 
 
     }

@@ -18,7 +18,11 @@ public class InstitutionAPI {
 
     Controller controller = new Controller();
 
+
+    //TODO: Changing Response to some other datatype
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response postLoginData(SearchParam search){
         System.out.println(search.toString());
             try {

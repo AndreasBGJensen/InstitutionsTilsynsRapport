@@ -4,6 +4,7 @@ package View.Rest;
 import Controller.Controller;
 import Controller.UserController.IUserController;
 import Controller.UserController.UserController;
+import Model.DTO.SearchParam;
 import View.Rest.Exceptions.NoImplementationException;
 import View.Rest.Exceptions.NoImplementationExceptionMapper;
 
@@ -25,7 +26,7 @@ public class UserAPI {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response getUser(@PathParam("id") String id){
+    public Response getUser(@PathParam("id") String id, SearchParam p){
         System.out.println("Pathname: "+ id);
 
         return controlle.getUser(id);

@@ -1,16 +1,16 @@
 package View.Rest;
 
 
-import Controller.Controller;
 import Controller.UserController.IUserController;
 import Controller.UserController.UserController;
-import Model.DTO.SearchParam;
 import View.Rest.Exceptions.NoImplementationException;
 import View.Rest.Exceptions.NoImplementationExceptionMapper;
+import View.Rest.Exceptions.NotFoundException;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 
 @Path("mongo")
@@ -26,7 +26,7 @@ public class UserAPI {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response getUser(@PathParam("id") String id, SearchParam p){
+    public Response getUser(@PathParam("id") String id){
         System.out.println("Pathname: "+ id);
 
         return controlle.getUser(id);
@@ -50,10 +50,10 @@ public class UserAPI {
 
     @GET
     @Path("/getKGardenQuery")
-    public Response getKGQuery(@QueryParam("name") String name)throws NoImplementationException {
-
-
-        return new NoImplementationExceptionMapper().toResponse(new NoImplementationException("Kidnergarden-queries not implemented, yetjjiiono"));
+    //Tell what exception will be thrown
+    public Response getKGQuery(@QueryParam("name") String name) throws NotFoundException {
+        //throws the actual exceoption.
+        throw new NotFoundException();
 
     }
 

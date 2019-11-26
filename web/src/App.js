@@ -3,7 +3,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import {observer} from "mobx-react";
-import InstitutionsStore from "./stores/InstitutionsStore";
 import LogIn from "./comtainer/Costumer/LogIn";
 import Register from "./comtainer/Costumer/Register"
 import {HashRouter as Router,Route} from "react-router-dom";

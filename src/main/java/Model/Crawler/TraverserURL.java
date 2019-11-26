@@ -1,6 +1,6 @@
 package Model.Crawler;
 
-import Model.Downloader.DownloadPDF;
+import Controller.Download.DownloadPDF;
 import Model.DTO.Institutions.Vuggestue;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

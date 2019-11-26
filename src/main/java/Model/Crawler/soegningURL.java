@@ -1,7 +1,6 @@
 package Model.Crawler;
 
-import Model.Downloader.DownloadPDF;
-import Model.IBaseURL.IBaseURL;
+import Model.IBaseURL;
 import Model.DTO.Institutions.Vuggestue;
 
 import org.jsoup.nodes.Document;

@@ -1,4 +1,4 @@
-package Model.IBaseURL;
+package Model;
 
 import Model.DTO.Institutions.Vuggestue;
 

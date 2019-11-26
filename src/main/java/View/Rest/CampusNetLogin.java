@@ -2,6 +2,8 @@ package View.Rest;
 
 import Controller.UserController.JWTHandler;
 import Model.DTO.User.UserDTO;
+import View.Rest.Exceptions.NotAuthorizedException;
+import io.jsonwebtoken.JwtHandler;
 import kong.unirest.Unirest;
 
 
@@ -16,12 +18,13 @@ public class CampusNetLogin {
 
     @GET
     @Path("login")
-    public Response login(){
-        String URI =  "https://auth.dtu.dk/dtu/?service=http://localhost:8080/rest/campusnet/redirect";
+    public Response login() {
+        String URI = "https://auth.dtu.dk/dtu/?service=http://localhost:8080/rest/campusnet/redirect";
         return Response.seeOther(UriBuilder.fromUri(URI).build()).build();
     }
+
     @GET @Path("redirect")
-    public String callback(@QueryParam("ticket") String cnTicket){
+    public Response callback(@QueryParam("ticket") String cnTicket){
         System.out.println(cnTicket); //Check if we got something back
         //Tjek ticket mod CampusNet
         String body = Unirest.get( "https://auth.dtu.dk/dtu/validate?service=http://localhost:8080/rest/campusnet/redirect&ticket="
@@ -30,7 +33,8 @@ public class CampusNetLogin {
                 .getBody();
 
         System.out.println("This is the body " +body);
-        return body; //Just return the result for now
+        String token = "/";
+        return Response.seeOther(UriBuilder.fromUri("http://localhost:3000/?token="+ token).build()).build(); //Just return the result for now
     }
 
 }

@@ -1,6 +1,4 @@
 import React from 'react';
-import Button from "react-bootstrap/Button";
-import {Form, InputGroup} from "react-bootstrap";
 import {TokenStore} from "../../stores/TokenStore";
 import 'bootstrap/dist/css/bootstrap.min.css'
 const tokenStore = new TokenStore();

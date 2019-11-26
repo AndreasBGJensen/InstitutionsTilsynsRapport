@@ -5,6 +5,7 @@ import Controller.UserController.IUserController;
 import Controller.UserController.UserController;
 import View.Rest.Exceptions.NoImplementationException;
 import View.Rest.Exceptions.NoImplementationExceptionMapper;
+import View.Rest.Exceptions.NotFoundException;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -49,8 +50,10 @@ public class UserAPI {
 
     @GET
     @Path("/getKGardenQuery")
-    public Response getKGQuery(@QueryParam("name") String name)throws NoImplementationException {
-        return new NoImplementationExceptionMapper().toResponse(new NoImplementationException("Kidnergarden-queries not implemented, yetjjiiono"));
+    //Tell what exception will be thrown
+    public Response getKGQuery(@QueryParam("name") String name) throws NotFoundException {
+        //throws the actual exceoption.
+        throw new NotFoundException();
 
     }
 

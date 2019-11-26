@@ -1,12 +1,36 @@
 import React from 'react';
-import {TokenStore} from "../../stores/TokenStore";
 import 'bootstrap/dist/css/bootstrap.min.css'
-const tokenStore = new TokenStore();
+
+const baseUrl = process.env.NODE_ENV === 'development' ?  "http://localhost:8080/":""; //Check if dev
 
 
 
 
 export class LogIn extends React.Component{
+
+    /*constructor() {
+        super();
+        //Loading data when it when the store is initialized.
+        this.fetchItem();
+    }
+
+    fetchItem(){
+        fetch(baseUrl + "rest/campusnet/login")
+            .then(()=> {
+                //console.log(response)
+            })
+            .catch((error)=>{
+                console.log(error)
+
+            });
+    }*/
+
+    render() {
+
+        return <a href={baseUrl+"rest/campusnet/login"}>login med campusnet</a>
+    }
+
+    /*
     constructor(props) {
         super(props);
         this.state = {
@@ -61,7 +85,7 @@ export class LogIn extends React.Component{
           </div>
 
         );
-    }
+    }*/
 }
 
 export default LogIn

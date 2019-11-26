@@ -32,9 +32,12 @@ public class CampusNetLogin {
                 .asString()
                 .getBody();
 
-        System.out.println("This is the body " +body);
-        String token = "/";
-        return Response.seeOther(UriBuilder.fromUri("http://localhost:3000/?token="+ token).build()).build(); //Just return the result for now
+        if ("yes".equals(body.split("\n")[0])){
+            String userID = body.split("\n")[1];
+            String token = JWTHandler.generateJwtToken(new UserDTO(userID, ""));
+            return Response.seeOther(UriBuilder.fromUri("http://localhost:3000/?token="+ token).build()).build();
+        }
+        return login();
     }
 
 }

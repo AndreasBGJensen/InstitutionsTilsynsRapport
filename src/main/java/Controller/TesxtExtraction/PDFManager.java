@@ -29,9 +29,9 @@ public class PDFManager {
     private File file;
     public ArrayList<String> indsatser = new ArrayList<String>();
     public ArrayList<String> kriterier = new ArrayList<String>();
-    public TreeMap<Integer, String> locateIndsate = new TreeMap<Integer, String>();
 
-    public HashMap<String,String> indsats = new HashMap<String, String>();
+
+
     int  countDown = 0;
 
     public PDFManager(){}
@@ -159,7 +159,7 @@ private void getIndsatser(){
 }
 
     public static void main(String[] args) {
-
+        HashMap<String,String> indsats = new HashMap<String, String>();
         PDFManager pdfManager = new PDFManager();
 
        //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\prinsessethyra\\asprise-ocr-2019_11_08-00_42_26_048.pdf");//Virker OCR behandlet
@@ -175,7 +175,7 @@ private void getIndsatser(){
         //pdfManager.setFilePath("C:\\Uddannelse\\Institution\\carolinehaven\\Tilsynsrapport 2018.pdf");//Test virker med denne metode
         //pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\klerkegade\\191031 ny tilsyn Klerkegade (002).pdf");//Test virker med denne metode
        // pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\kongehatten\\Pædagogisk tilsyn 2019.pdf");//Test virker med denne metode
-       // pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\boernejunglen\\Tilsynsrapport 2017.pdf");
+     pdfManager.setFilePath("C:\\Uddannelse\\InstitutionsTilsynsRapport\\boernejunglen\\Tilsynsrapport 2017.pdf");
 
 
         try {
@@ -184,7 +184,7 @@ private void getIndsatser(){
             pdfManager.setFilePath(text);
             //pdfManager.indsatsExist(text);
 
-            System.out.println(pdfManager.indsats.toString());
+            System.out.println(indsats.toString());
 
             String[] testIndex = text.split("\\r\\n");
             //String[] testIndex = text.split("\\n");//Dette er til, hvis pdffilen er ocr behandlet af tess4J

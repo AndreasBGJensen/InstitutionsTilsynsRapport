@@ -1,6 +1,5 @@
 import View.Rest.InstitutionAPI;
-import View.Rest.SearchParam;
-import com.mongodb.util.JSON;
+import Model.DTO.SearchParam;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 

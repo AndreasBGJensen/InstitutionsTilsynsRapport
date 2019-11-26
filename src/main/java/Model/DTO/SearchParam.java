@@ -1,4 +1,4 @@
-package View.Rest;
+package Model.DTO;
 
 import lombok.*;
 

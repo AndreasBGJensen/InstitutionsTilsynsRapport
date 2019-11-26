@@ -10,7 +10,6 @@ import SearchInstitution from "./comtainer/Costumer/SearchInstitution"
 
 import {Switch} from "react-router-dom"
 import Container from "react-bootstrap/Container";
-import LandingPage from "./comtainer/LandingPage";
 import institutionView from "./comtainer/Costumer/InstitutionView"
 import LandingPage from "./comtainer/LandingPage"
 import Navbar from "./comtainer/Utility/NavBar";

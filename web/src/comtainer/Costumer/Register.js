@@ -46,7 +46,7 @@ class Register extends React.Component {
 
         console.log(this.state.user)
 
-    }
+    };
 
     validate=(user)=>{
         const errors={};
@@ -56,6 +56,8 @@ class Register extends React.Component {
         return errors;
 
     };
+
+
 
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -47,19 +47,6 @@
 
     </properties>
     <dependencies>
-        <!--Embedded Tomcat-->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
-        <!-- JSP - to shut up Tomcat -->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
-
         <!--        Til Rest-->
         <!-- Rest Spec -->
         <!--Embedded Tomcat-->
@@ -119,7 +106,6 @@
         </dependency>
 
 
-
         <!--junit-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -132,12 +118,6 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.5.2</version>
             <scope>test</scope>
-        </dependency>
-        <!-- Injection manager -->
-        <dependency>
-            <groupId>org.glassfish.jersey.inject</groupId>
-            <artifactId>jersey-hk2</artifactId>
-            <version>2.27</version>
         </dependency>
         <!-- Json mapper -->
         <dependency>
@@ -155,11 +135,11 @@
 
         <!--JONGO for MongoDB-->
         <!-- https://mvnrepository.com/artifact/org.jongo/jongo -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.jongo</groupId>
             <artifactId>jongo</artifactId>
             <version>1.4.0</version>
-        </dependency>
+        </dependency>-->
 
         <!--LOMBOK-->
         <dependency>
@@ -212,7 +192,6 @@
             <version>0.7.0</version>
         </dependency>
 
-
         <!---CRAWLER DEPENDENCIES-->
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
@@ -220,7 +199,6 @@
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
         </dependency>
-
 
 
         <!--PDFOperations-->

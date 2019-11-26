@@ -27,4 +27,5 @@ public class InstitutionAPI {
                 return Response.status(INTERNAL_SERVER_ERROR).entity("Somthing happen").build();
             }
         }
+
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import {institution} from '../../stores/InstitutionsStore'
-import Table from "../../List/Table";
 
 
 //Adding itmes to the list.
@@ -54,7 +53,7 @@ class InstitutionView extends React.Component {
 
 
     render() {
-        debugger
+        //debugger
         return(
         <div>
 

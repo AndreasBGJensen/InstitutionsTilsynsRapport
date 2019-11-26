@@ -4,7 +4,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-//TODO: find out if provider makes us able to access the exception mapper
 @Provider
 public class NoImplementationExceptionMapper implements ExceptionMapper<NoImplementationException> {
     @Override

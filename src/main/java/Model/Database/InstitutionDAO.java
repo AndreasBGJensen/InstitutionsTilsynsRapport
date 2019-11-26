@@ -32,12 +32,12 @@ public class InstitutionDAO implements IInstitutionDAO {
 
         Institution  institution = institutioner.findOne("{navn: '"+institutionName+"'}").as(Institution.class);
 
-        JSONObject json = new JSONObject(institution.toString());
+        //JSONObject json = new JSONObject(institution.toString());
 
         System.out.println(institution);
 
         if(institution!= null){
-            return Response.ok().entity(json).build();
+            return Response.ok().entity(institution).build();
         }
 
         return Response.noContent().entity("Not able to find the instution in the database").build();

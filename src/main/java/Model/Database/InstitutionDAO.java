@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 public class InstitutionDAO implements IInstitutionDAO {
     @Override
-    public Response createInstitution(Institution institution) {
+    public Response createInstitution(Vuggestue institution) {
 
 
             Jongo jongo = new Jongo(MongoConnector.getInstance());
@@ -60,5 +60,27 @@ public class InstitutionDAO implements IInstitutionDAO {
         return null;
     }
 
+    @Override
+    public int checkInstitution(String navn){
 
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+        return (int)institutioner.count("{navn: '"+navn+"'}");
+
+
+    }
+
+    @Override
+    public Response removeInstitution(String navn) {
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+
+
+        if(institutioner.find(navn)!=null)institutioner.remove(navn);
+
+
+        return Response.ok().build();
+    }
 }

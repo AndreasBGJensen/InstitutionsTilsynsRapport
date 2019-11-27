@@ -32,4 +32,11 @@ public class InstitutionsAPI {
         }
     }
 
+
+    @GET
+    public String deepUpdateDatabase(SearchParam search){
+        return controller.updateInstitutionQuery(search.getVejnavn(),search.getPostNr());
+
+    }
+
 }

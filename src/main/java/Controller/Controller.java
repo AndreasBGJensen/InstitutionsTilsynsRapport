@@ -22,11 +22,11 @@ public class Controller {
     /*
     Method inserts all searchresults into the database. If one instance exist it will not be insertet into the database.
      */
-    public Response updateInstitutionQuery(String vejNavn, String postNr){
+    public String updateInstitutionQuery(String vejNavn, String postNr){
 
         List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn,postNr);
 
-      /*  for (Vuggestue a:respons
+        for (Vuggestue a:respons
         ) {
 
             //Insures that there will be only one
@@ -37,9 +37,9 @@ public class Controller {
                 database.removeInstitution(a.getNavn());
                 database.createInstitution(a);
             }
-        }*/
+        }
 
-        return Response.ok().entity("Database updated").build();
+        return "Indhentet tilsyn for adressen: " + vejNavn + ", "+postNr;
 
 
     }

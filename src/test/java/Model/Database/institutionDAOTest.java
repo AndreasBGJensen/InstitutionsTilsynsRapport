@@ -1,6 +1,7 @@
 package Model.Database;
 
 import Model.DTO.Institutions.Institution;
+import Model.DTO.Institutions.Vuggestue;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ public class institutionDAOTest {
     private IInstitutionDAO institutionDAO = new InstitutionDAO();
     @Test
     public void createInstitution(){
-        Institution testInstitution = new Institution("Røde Rose","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+        Vuggestue testInstitution = new Vuggestue("Røde Rose","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
         Response response = institutionDAO.createInstitution(testInstitution);
 
@@ -31,7 +32,7 @@ public class institutionDAOTest {
     public void getInstitution(){
 
 
-        Institution testInstitution = new Institution("Test","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+        Vuggestue testInstitution = new Vuggestue("Test","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
         institutionDAO.createInstitution(testInstitution);
         Response response = institutionDAO.getInstitution("Test");
@@ -50,7 +51,7 @@ public class institutionDAOTest {
     public void ErrorGetInstitution() {
 
 
-        Institution testInstitution = new Institution("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+        Vuggestue testInstitution = new Vuggestue("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
         institutionDAO.createInstitution(testInstitution);
         Response response = institutionDAO.getInstitution("Test");

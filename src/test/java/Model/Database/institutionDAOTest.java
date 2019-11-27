@@ -10,6 +10,10 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
+Tester database. Testen har dog en del mangler eftersom at den i bund og grund ikke tester den enkelte metode men også tester
+Oprettelse af database connection osv.
+ */
 
 public class institutionDAOTest {
 

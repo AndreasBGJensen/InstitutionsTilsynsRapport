@@ -30,13 +30,11 @@ public class ControllerTest {
 
 
 
-        String vejnavn = "";
-        String postnr ="";
+
         String respons;
         String testString = "Indhentet tilsyn, database opdateret";
         for(int i = 0; i<vejNavn.length;i++) {
-            vejnavn = vejNavn[i];
-            postnr = postNr[i];
+
 
             respons= control.updateInstitutionQuery(vejNavn[i],postNr[i]);
 

@@ -39,7 +39,7 @@ public class Controller {
             }
         }
 
-        return "Indhentet tilsyn for adressen: " + vejNavn + ", "+postNr;
+        return "Indhentet tilsyn, database opdateret";
 
 
     }

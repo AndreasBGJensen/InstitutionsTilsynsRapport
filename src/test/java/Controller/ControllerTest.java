@@ -14,6 +14,11 @@ public class ControllerTest {
 
     Controller control = new Controller();
 
+
+    /*
+    Testing that the crawler finds tilsynsrapporter and that they are loaded into the db.
+    Test dog mangelfuld...
+     */
     @Test
     public void updateInstitutionQueryTest() {
 
@@ -28,7 +33,7 @@ public class ControllerTest {
         String vejnavn = "";
         String postnr ="";
         String respons;
-        String testString = "Indhentet tilsyn for adressen: " + vejnavn + ", "+postnr;
+        String testString = "Indhentet tilsyn, database opdateret";
         for(int i = 0; i<vejNavn.length;i++) {
             vejnavn = vejNavn[i];
             postnr = postNr[i];
@@ -43,12 +48,17 @@ public class ControllerTest {
 
 
     }
+
+    /*
+    Testing that the search adress will find the wright ones from the Crawler and that they are loaded from the database.
+     */
+
     @Test
     public void getUserSearchInstitutionsFromDatabaseTest(){
 
-        String[] vejNavn ={"Mimersgade","Olfert Fischers Gade"};
+        String[] vejNavn ={"Mimersgade"};
 
-        String[] postNr = {"2200","1311"};
+        String[] postNr = {"2200"};
 
         JSONObject json = new JSONObject();
 

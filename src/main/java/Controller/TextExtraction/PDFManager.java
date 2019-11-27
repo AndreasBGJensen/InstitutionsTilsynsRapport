@@ -147,7 +147,7 @@ public class PDFManager {
                     }
                     if(a.getIndsats(h).getIndsatser().size()==0){
                         //TODO: Make sure that it will extract text from the OCR pdf
-                        Controller.TesxtExtraction.OCR.CreatePdfWithTextDemo(a,h);
+                       // Controller.TesxtExtraction.OCR.CreatePdfWithTextDemo(a,h);
 
                     }
 

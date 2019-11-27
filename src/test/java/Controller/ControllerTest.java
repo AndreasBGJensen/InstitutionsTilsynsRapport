@@ -23,9 +23,9 @@ public class ControllerTest {
     public void updateInstitutionQueryTest() {
 
 
-        String[] vejNavn ={"Mimersgade"};
+        String vejNavn ="Mimersgade";
 
-        String[] postNr = {"2200"};
+        String postNr = "2200";
 
 
 
@@ -33,20 +33,35 @@ public class ControllerTest {
 
         String respons;
         String testString = "Indhentet tilsyn, database opdateret";
-        for(int i = 0; i<vejNavn.length;i++) {
 
 
-            respons= control.updateInstitutionQuery(vejNavn[i],postNr[i]);
+
+            respons= control.updateInstitutionQuery(vejNavn,postNr);
 
             assertEquals(testString,respons);
 
-
-        }
 
 
 
     }
 
+    /*
+    Tester at en forspørgsel ikke kan gennemføres
+     */
+
+    @Test
+    public void updateInstitutionQueryFAILTest() {
+        //Her får vi testen at crache
+        String vejNavnForkert ="dsfdsfdsf";
+
+        String postNrForkert = "sdfsdf";
+
+        String respons;
+        respons= control.updateInstitutionQuery(vejNavnForkert,postNrForkert);
+
+        String forkertForespørgsel ="Forespørgslen kunne ikke gennemføres";
+        assertEquals(forkertForespørgsel,respons);
+    }
     /*
     Testing that the search adress will find the wright ones from the Crawler and that they are loaded from the database.
      */

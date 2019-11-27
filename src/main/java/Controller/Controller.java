@@ -23,24 +23,31 @@ public class Controller {
     Method inserts all searchresults into the database. If one instance exist it will not be insertet into the database.
      */
     public String updateInstitutionQuery(String vejNavn, String postNr){
+try {
+    List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn, postNr);
 
-        List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn,postNr);
+    if(respons.size()==0){
+        return  "Forespørgslen kunne ikke gennemføres";
+    }
 
-        for (Vuggestue a:respons
-        ) {
+    for (Vuggestue a : respons
+    ) {
 
-            //Insures that there will be only one
-            if(database.checkInstitution(a.getNavn())==0) {
-                database.createInstitution(a);
-                System.out.println("Added : " + a.toString());
-            }else{
-                database.removeInstitution(a.getNavn());
-                database.createInstitution(a);
-            }
+        //Insures that there will be only one
+        if (database.checkInstitution(a.getNavn()) == 0) {
+            database.createInstitution(a);
+            System.out.println("Added : " + a.toString());
+        } else {
+            database.removeInstitution(a.getNavn());
+            database.createInstitution(a);
         }
+    }
 
-        return "Indhentet tilsyn, database opdateret";
+    return "Indhentet tilsyn, database opdateret";
 
+}catch (Exception e){
+        return "Noget gik galt under indhentningen af data";
+    }
 
     }
 

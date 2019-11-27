@@ -40,7 +40,7 @@ public class institutionDAOTest {
 
         institutionDAO.createInstitution(testInstitution);
         Response response = institutionDAO.getInstitution("Test");
-        Institution test =  (Institution)response.getEntity();
+        Vuggestue test =  (Vuggestue) response.getEntity();
 
         assertEquals(test.toString(),testInstitution.toString());
         assertEquals(200,response.getStatus());
@@ -57,11 +57,12 @@ public class institutionDAOTest {
 
         Vuggestue testInstitution = new Vuggestue("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
-        institutionDAO.createInstitution(testInstitution);
+        institutionDAO.removeInstitution("Test");
+       // institutionDAO.createInstitution(testInstitution);
         Response response = institutionDAO.getInstitution("Test");
 
-
-        assertEquals(300, response.getStatus());
+//
+        assertEquals(204, response.getStatus());
     }
 
 

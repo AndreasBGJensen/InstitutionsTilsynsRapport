@@ -18,6 +18,6 @@ public interface IInstitutionDAO {
 
     public int checkInstitution(String navn);
 
-    public Response removeInstitution(String navn);
+    public void removeInstitution(String navn);
 
 }

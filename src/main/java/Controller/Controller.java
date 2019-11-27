@@ -30,7 +30,7 @@ public class Controller {
         ) {
 
             //Insures that there will be only one
-            if(database.checkInstitution(a.getNavn())!=0) {
+            if(database.checkInstitution(a.getNavn())==0) {
                 database.createInstitution(a);
                 System.out.println("Added : " + a.toString());
             }else{

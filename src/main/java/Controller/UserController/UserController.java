@@ -67,7 +67,7 @@ public class UserController implements IUserController, IInstitutionDAO {
     }
 
     @Override
-    public Response removeInstitution(String navn) {
-        return null;
+    public void removeInstitution(String navn) {
+
     }
 }

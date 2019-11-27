@@ -7,6 +7,7 @@ import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.json.JSONObject;
 
+import javax.validation.constraints.Null;
 import javax.ws.rs.core.Response;
 
 public class InstitutionDAO implements IInstitutionDAO {
@@ -60,6 +61,9 @@ public class InstitutionDAO implements IInstitutionDAO {
         return null;
     }
 
+
+
+
     @Override
     public int checkInstitution(String navn){
 
@@ -72,15 +76,20 @@ public class InstitutionDAO implements IInstitutionDAO {
     }
 
     @Override
-    public Response removeInstitution(String navn) {
+    public void removeInstitution(String navn) {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
         MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
 
+        Vuggestue institution = institutioner.findOne("{navn: '"+navn+"'}").as(Vuggestue.class);
 
-        if(institutioner.find(navn)!=null)institutioner.remove(navn);
+        if(institution== null){
 
 
-        return Response.ok().build();
+        }else {
+            institutioner.remove("{navn: '"+navn+"'}");
+
+
+        }
     }
 }

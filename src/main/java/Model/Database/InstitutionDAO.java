@@ -76,7 +76,7 @@ public class InstitutionDAO implements IInstitutionDAO {
     }
 
     @Override
-    public void removeInstitution(String navn) {
+    public int removeInstitution(String navn) {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
         MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
@@ -85,11 +85,11 @@ public class InstitutionDAO implements IInstitutionDAO {
 
         if(institution== null){
 
-
-        }else {
+return 0;
+        }
             institutioner.remove("{navn: '"+navn+"'}");
 
 
-        }
+        return 1;
     }
 }

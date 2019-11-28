@@ -16,17 +16,17 @@ const ListItem = ({ item }) => (
    <div>
     <td>
     <tr>
-        <div>{item.Navn}</div>
+        <div>{item.navn}</div>
     </tr>
    </td>
        <td>
            <tr>
-               <div>{item.Adresse}</div>
+               <div> venteliste {item.venteliste}</div>
            </tr>
        </td>
        <td>
            <tr>
-               <div><a href={item.Link}>{item.Link}</a></div>
+               <div><a href={item.link}>{item.link}</a></div>
 
            </tr>
        </td>

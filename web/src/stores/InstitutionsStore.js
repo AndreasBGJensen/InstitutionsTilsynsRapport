@@ -20,9 +20,9 @@ state = states.DONE;
 
 //The fetchcall
     fetchItem (){
-
+debugger
         this.state = states.LOADING;
-        fetch(baseUrl + "http://localhost:8080/rest/institution")
+        fetch(baseUrl + "rest/institution/all")
             .then((response)=> {
                 console.log(response);
                 response.json().then((json)=> {

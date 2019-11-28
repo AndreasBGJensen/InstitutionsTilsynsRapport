@@ -20,7 +20,7 @@ public class DownloadPDF {
 
         String nyfilename=filename.concat(endFileType(filename));
         nyfilename=cleanUpFilename(nyfilename);
-        //Inds�tter file og pathname til senere brug
+        //Indsætter file og pathname til senere brug
         vuggestue.addTilsynsPath("./"+path+"/"+nyfilename);
         try {
             createDirectory(path);
@@ -30,6 +30,8 @@ public class DownloadPDF {
             FileOutputStream fos = new FileOutputStream(new File("./"+path+"/"+nyfilename));
 
             System.out.println("reading from resource and writing to file...");
+
+            //So that it is empty in the bit array
             int length = -1;
 
 
@@ -66,6 +68,8 @@ public class DownloadPDF {
     }
 
     private String endFileType(String link){
+
+        //TODO:Sikrer at en filepath ikke bliver til ..pdf eller ..docx
         if(link.contains(".docx")||link.contains(".pdf")){
             return "";
         }

@@ -20,7 +20,7 @@ state = states.DONE;
 
 //The fetchcall
     fetchItem (){
-debugger
+
         this.state = states.LOADING;
         fetch(baseUrl + "rest/institution/all")
             .then((response)=> {

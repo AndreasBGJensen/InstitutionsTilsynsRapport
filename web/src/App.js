@@ -14,6 +14,8 @@ import institutionView from "./comtainer/Costumer/InstitutionView"
 import LandingPage from "./comtainer/LandingPage"
 import Navbar from "./comtainer/Utility/NavBar";
 
+import EksempelListe from "./comtainer/Costumer/TestListe";
+
 import GetInstitutions from "./comtainer/Costumer/GetInstitutions";
 
 

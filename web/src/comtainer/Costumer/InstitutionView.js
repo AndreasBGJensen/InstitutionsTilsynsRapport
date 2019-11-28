@@ -19,15 +19,44 @@ const ListItem = ({ item }) => (
         <div>{item.navn}</div>
     </tr>
    </td>
+
+
+       <td>
+           <tr>
+               <div>
+                   {
+                   (typeof(item.indstsers)=="object"?
+                       <div>
+                           {
+                               item.indstsers.map((subRowdata,j)=>
+                                   <div>
+                                       {subRowdata.tilsyn}
+                                   </div>
+                               )
+
+                           }
+
+                       </div>
+                           :
+                       null)
+                   }
+
+               </div>
+           </tr>
+       </td>
+
+
        <td>
            <tr>
                <div> venteliste {item.venteliste}</div>
            </tr>
        </td>
+
+
+
        <td>
            <tr>
                <div><a href={item.link}>{item.link}</a></div>
-
            </tr>
        </td>
    </div>

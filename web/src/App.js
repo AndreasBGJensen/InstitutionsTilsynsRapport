@@ -14,6 +14,8 @@ import institutionView from "./comtainer/Costumer/InstitutionView"
 import LandingPage from "./comtainer/LandingPage"
 import Navbar from "./comtainer/Utility/NavBar";
 
+import GetInstitutions from "./comtainer/Costumer/GetInstitutions";
+
 
 
 class App extends React.Component{
@@ -28,6 +30,12 @@ render()
 
             <Container>
                 <Navbar/>
+
+                <div>
+                    <GetInstitutions/>
+                </div>
+
+
                 <Router>
                     <Switch>
                         <Route exact path={"/"} component={LandingPage}/>

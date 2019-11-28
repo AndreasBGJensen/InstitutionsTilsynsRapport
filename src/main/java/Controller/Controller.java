@@ -66,4 +66,10 @@ try {
 
         return Response.ok().entity(json).build();
     }
+
+
+
+    public Iterable<Vuggestue> getAllInstitutions(){
+        return database.getAllInstitution();
+    }
 }

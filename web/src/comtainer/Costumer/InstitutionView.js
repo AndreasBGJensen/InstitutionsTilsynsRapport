@@ -36,6 +36,10 @@ const ListItem = ({ item }) => (
 );
 
 
+
+
+
+
 class InstitutionView extends React.Component {
     constructor(props) {
         super(props);

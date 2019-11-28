@@ -57,7 +57,7 @@ public class UserController implements IUserController, IInstitutionDAO {
     }
 
     @Override
-    public Response getAllInstitution(String institutionId) {
+    public Iterable<Vuggestue> getAllInstitution() {
         return null;
     }
 

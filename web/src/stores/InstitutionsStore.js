@@ -22,7 +22,7 @@ state = states.DONE;
     fetchItem (){
 
         this.state = states.LOADING;
-        fetch(baseUrl + "rest/mongo/test")
+        fetch(baseUrl + "http://localhost:8080/rest/institution")
             .then((response)=> {
                 console.log(response);
                 response.json().then((json)=> {

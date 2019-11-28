@@ -23,9 +23,9 @@ public class ControllerTest {
     public void updateInstitutionQueryTest() {
 
 
-        String vejNavn ="Mimersgade";
+        String[] vejNavn ={"Mimersgade","Åfløjen","Stærevej", "Nordbanegade","Ravnsborggade","Gothersgade","Holbergsgade","Wilders Plads","Islands Brygge"};
 
-        String postNr = "2200";
+        String[] postNr = {"2200","2700","2400","2200","2200","1123","1057","1403","2300"};
 
 
 
@@ -35,10 +35,11 @@ public class ControllerTest {
         String testString = "Indhentet tilsyn, database opdateret";
 
 
+for(int i = 0; i<vejNavn.length;i++) {
+    respons = control.updateInstitutionQuery(vejNavn[i], postNr[i]);
+    assertEquals(testString,respons);
+}
 
-            respons= control.updateInstitutionQuery(vejNavn,postNr);
-
-            assertEquals(testString,respons);
 
 
 

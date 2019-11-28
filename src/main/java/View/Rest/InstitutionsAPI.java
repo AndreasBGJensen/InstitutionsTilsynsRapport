@@ -1,5 +1,6 @@
 package View.Rest;
 import Controller.Controller;
+import Model.DTO.Institutions.Vuggestue;
 import Model.DTO.SearchParam;
 
 
@@ -7,6 +8,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+
+import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR;
 
@@ -38,5 +41,12 @@ public class InstitutionsAPI {
         return controller.updateInstitutionQuery(search.getVejnavn(),search.getPostNr());
 
     }
+
+   @Path("/all")
+    @GET
+    public Iterable<Vuggestue> getAllVuggestuer() {
+
+return controller.getAllInstitutions();
+   }
 
 }

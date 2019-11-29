@@ -28,11 +28,12 @@ const ListItem = ({ item }) => (
                    (typeof(item.indstsers)=="object"?
                        <div>
                            {
-                               item.indstsers.map((subRowdata,j)=>
+                               item.links.map((indsats,j)=>(
                                    <div>
-                                       {subRowdata.tilsyn}
+                                       <a href={indsats}>{item.tilsynsPath}</a>
+
                                    </div>
-                               )
+                               ))
 
                            }
 
@@ -46,17 +47,10 @@ const ListItem = ({ item }) => (
        </td>
 
 
+
        <td>
            <tr>
                <div> venteliste {item.venteliste}</div>
-           </tr>
-       </td>
-
-
-
-       <td>
-           <tr>
-               <div><a href={item.link}>{item.link}</a></div>
            </tr>
        </td>
    </div>

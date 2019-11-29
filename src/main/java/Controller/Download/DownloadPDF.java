@@ -2,6 +2,7 @@ package Controller.Download;
 
 import Controller.TesxtExtraction.OCR;
 import Model.DTO.Institutions.Vuggestue;
+import Model.Util.ValidateContentAttay;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,9 +22,12 @@ public class DownloadPDF {
         String nyfilename=filename.concat(endFileType(filename));
         nyfilename=cleanUpFilename(nyfilename);
         //Indsætter file og pathname til senere brug
-        vuggestue.addTilsynsPath("./"+path+"/"+nyfilename);
+        String filepath = "./"+path+"/"+nyfilename; //Hvor skal filen ligge. (Denne path anvendes under ocr)
+        if(ValidateContentAttay.validateContent(vuggestue.getTilsynsPath(),filepath)) {
+            vuggestue.addTilsynsPath("./" + path + "/" + nyfilename);
+        }
         try {
-            createDirectory(path);
+            createDirectory(path);//Naming the directory to the institution name
             System.out.println("opening connection");
             URL url = new URL(adress);
             InputStream in = url.openStream();

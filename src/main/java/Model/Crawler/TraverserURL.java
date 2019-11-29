@@ -196,8 +196,9 @@ public class TraverserURL {
 
 
     private void getTilsysnrapport(Element y ){
-        if(y.toString().contains("tilsyn")||y.toString().contains("Tilsyn")){
-            if(doc.createDocument(y.attr("abs:href"))==null){
+        if(y.toString().contains("tilsyn")||y.toString().contains("Tilsyn")){ //Hvis at den URI vi har fat i indeholder tilsyn
+            if(doc.createDocument(y.attr("abs:href"))==null){//Hvis vi rammer en endestation
+
                 if(ValidateContentAttay.validateContent(vuggestuer.get(i).getLink(),y.attr("abs:href"))) {
                     vuggestuer.get(i).addLink(y.attr("abs:href"));
                     //TODO: Denne skla med, hvis der skal downloades en pdf.

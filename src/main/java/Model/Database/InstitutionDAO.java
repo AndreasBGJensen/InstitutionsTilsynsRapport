@@ -1,5 +1,6 @@
 package Model.Database;
 
+import Model.DTO.Institutions.Indstser;
 import Model.DTO.Institutions.Institution;
 import Model.DTO.Institutions.Vuggestue;
 import Model.DTO.User.UserDTO;

@@ -32,7 +32,7 @@ try {
 
     for (Vuggestue a : respons
     ) {
-
+//TODO: Sikre at indstser ikke bliver dubbleret
         //Insures that there will be only one
         if (database.checkInstitution(a.getNavn()) == 0) {
             database.createInstitution(a);

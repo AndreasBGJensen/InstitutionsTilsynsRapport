@@ -35,12 +35,6 @@ render()
                 <Navbar/>
 
 
-                <Link to ={{//Linking to search results
-                    pathname: "/search",
-
-                }} >
-                    <Button> Se Tilsyn </Button>
-                </Link>
 
 
 

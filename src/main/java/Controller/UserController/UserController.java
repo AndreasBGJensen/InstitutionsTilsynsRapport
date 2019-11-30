@@ -1,6 +1,7 @@
 package Controller.UserController;
 
 import Model.DTO.Institutions.Institution;
+import Model.DTO.Institutions.Vuggestue;
 import Model.Database.IInstitutionDAO;
 import Model.Database.IUserDAO;
 import Model.Database.InstitutionDAO;
@@ -39,7 +40,7 @@ public class UserController implements IUserController, IInstitutionDAO {
     }
 
     @Override
-    public Response createInstitution(Institution institution) {
+    public Response createInstitution(Vuggestue institution) {
         return null;
     }
 
@@ -56,7 +57,17 @@ public class UserController implements IUserController, IInstitutionDAO {
     }
 
     @Override
-    public Response getAllInstitution(String institutionId) {
+    public Iterable<Vuggestue> getAllInstitution() {
         return null;
+    }
+
+    @Override
+    public int checkInstitution(String navn) {
+        return 0;
+    }
+
+    @Override
+    public int removeInstitution(String navn) {
+return 0;
     }
 }

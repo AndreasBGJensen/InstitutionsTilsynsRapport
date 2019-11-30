@@ -1,7 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Link} from "react-router-dom"
-import axios from "axios";
 
 class SearchInstitution extends React.Component {
     constructor(props) {

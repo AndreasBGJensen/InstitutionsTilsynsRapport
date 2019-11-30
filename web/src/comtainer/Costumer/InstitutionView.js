@@ -28,9 +28,9 @@ const ListItem = ({ item }) => (
                    (typeof(item.indstsers)=="object"?
                        <div>
                            {
-                               item.links.map((indsats,j)=>(
+                               item.tilsynsPath.map((indsats,j)=>(
                                    <div>
-                                       <a href={indsats}>{item.tilsynsPath}</a>
+                                       <a href={indsats}>{item.tilsynsPath[j]}</a>
 
                                    </div>
                                ))

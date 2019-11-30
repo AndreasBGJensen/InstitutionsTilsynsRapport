@@ -36,6 +36,10 @@ class SearchInstitution extends React.Component {
         });
   console.log(this.state.fiels)
 
+
+
+
+
     }
 //Validates if there is an input
     validate=(fiels)=>{
@@ -57,6 +61,9 @@ class SearchInstitution extends React.Component {
         console.log('Handle change' +this.state.fiels.adress);
         console.log('Handle change' +this.state.fiels.zipcode);
     };
+
+
+
 
     render() {
         return (

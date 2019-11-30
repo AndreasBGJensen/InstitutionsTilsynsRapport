@@ -30,7 +30,12 @@ const ListItem = ({ item }) => (
                            {
                                item.tilsynsPath.map((indsats,j)=>(
                                    <div>
-                                       <a href={indsats}>{item.tilsynsPath[j]}</a>
+
+                                           <a href={item.link[j]}>{item.tilsynsPath[j]}</a>
+
+
+                                       )}
+
 
                                    </div>
                                ))

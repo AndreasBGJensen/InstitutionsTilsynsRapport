@@ -20,7 +20,8 @@ public class Controller {
     public Controller(){}
 
     /*
-    Method inserts all searchresults into the database. If one instance exist it will not be insertet into the database.
+    Method inserts all searchresults into the database.
+     If one instance exist it will not be insertet into the database.
      */
     public String updateInstitutionQuery(String vejNavn, String postNr){
 try {

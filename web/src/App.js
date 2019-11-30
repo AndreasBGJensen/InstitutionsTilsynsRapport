@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {observer} from "mobx-react";
 import LogIn from "./comtainer/Costumer/LogIn";
 import Register from "./comtainer/Costumer/Register"
-import {HashRouter as Router,Route} from "react-router-dom";
+import {HashRouter as Router, Link, Route} from "react-router-dom";
 import SearchInstitution from "./comtainer/Costumer/SearchInstitution"
 
 import {Switch} from "react-router-dom"
@@ -17,6 +17,7 @@ import Navbar from "./comtainer/Utility/NavBar";
 import EksempelListe from "./comtainer/Costumer/TestListe";
 
 import GetInstitutions from "./comtainer/Costumer/GetInstitutions";
+import Button from "react-bootstrap/Button";
 
 
 
@@ -33,9 +34,14 @@ render()
             <Container>
                 <Navbar/>
 
-                <div>
-                    <GetInstitutions/>
-                </div>
+
+                <Link to ={{//Linking to search results
+                    pathname: "/search",
+
+                }} >
+                    <Button> Se Tilsyn </Button>
+                </Link>
+
 
 
                 <Router>

@@ -1,4 +1,4 @@
-package Controller.UserController;
+package View.Rest;
 
 import Model.DTO.User.UserDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;

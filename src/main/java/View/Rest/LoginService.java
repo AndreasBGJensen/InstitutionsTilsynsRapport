@@ -3,7 +3,7 @@ package View.Rest;
 
 
 import Model.DTO.User.UserDTO;
-import Controller.UserController.JWTHandler;
+import View.Rest.JWTHandler;
 import org.mindrot.jbcrypt.BCrypt;
 
 

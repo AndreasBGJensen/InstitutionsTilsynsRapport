@@ -1,6 +1,6 @@
 package View.Rest;
 
-import Controller.UserController.JWTHandler;
+import View.Rest.JWTHandler;
 import Model.DTO.User.UserDTO;
 import View.Rest.Exceptions.NotAuthorizedException;
 import io.jsonwebtoken.JwtHandler;

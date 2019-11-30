@@ -2,6 +2,7 @@ package Model.Crawler;
 
 import Controller.Download.DownloadPDF;
 import Model.DTO.Institutions.Vuggestue;
+import Model.Util.ValidateContentAttay;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -77,7 +78,7 @@ public class TraverserURL {
 
     }
     /*
-    Filtrere alle mulige m�rkelige url fra eks. Mails kalender osv.
+    Filtrere alle mulige mærkelige url fra eks. Mails kalender osv.
      */
     private boolean urlAccess(String url){
         String[] badKeyWords = {"mail","kalender", "txt"};
@@ -195,12 +196,14 @@ public class TraverserURL {
 
 
     private void getTilsysnrapport(Element y ){
-        if(y.toString().contains("tilsyn")||y.toString().contains("Tilsyn")){
-            if(doc.createDocument(y.attr("abs:href"))==null){
-                vuggestuer.get(i).addLink(y.attr("abs:href"));
-                //TODO: Denne skla med, hvis der skal downloades en pdf.
-                pdfWriter.download(y.attr("abs:href"),y.text(),separateDot(vuggestuer.get(i).getBaseLink())[1],vuggestuer.get(i));
+        if(y.toString().contains("tilsyn")||y.toString().contains("Tilsyn")){ //Hvis at den URI vi har fat i indeholder tilsyn
+            if(doc.createDocument(y.attr("abs:href"))==null){//Hvis vi rammer en endestation
 
+                if(ValidateContentAttay.validateContent(vuggestuer.get(i).getLink(),y.attr("abs:href"))) {
+                    vuggestuer.get(i).addLink(y.attr("abs:href"));
+                    //TODO: Denne skla med, hvis der skal downloades en pdf.
+                    pdfWriter.download(y.attr("abs:href"), y.text(), separateDot(vuggestuer.get(i).getBaseLink())[1], vuggestuer.get(i));
+                }
             }
         }
     }

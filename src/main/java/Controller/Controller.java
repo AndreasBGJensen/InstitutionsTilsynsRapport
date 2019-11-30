@@ -32,7 +32,7 @@ try {
 
     for (Vuggestue a : respons
     ) {
-
+//TODO: Sikre at indstser ikke bliver dubbleret
         //Insures that there will be only one
         if (database.checkInstitution(a.getNavn()) == 0) {
             database.createInstitution(a);
@@ -65,5 +65,11 @@ try {
         System.out.println(json.toString());
 
         return Response.ok().entity(json).build();
+    }
+
+
+
+    public Iterable<Vuggestue> getAllInstitutions(){
+        return database.getAllInstitution();
     }
 }

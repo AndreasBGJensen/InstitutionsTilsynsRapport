@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.core.Response;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
@@ -73,6 +75,20 @@ institutionDAO.createInstitution(testInstitution);
        int result = institutionDAO.removeInstitution("Test");
 
        assertEquals(1,result);
+
+    }
+
+
+
+    @Test
+    public void getAll(){
+
+
+
+
+        System.out.println(institutionDAO.getAllInstitution());
+
+
 
     }
 

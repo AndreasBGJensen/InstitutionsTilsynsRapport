@@ -14,7 +14,7 @@ public interface IInstitutionDAO {
 
     public Response updateInstitution(String institutionId);
 
-    public Response getAllInstitution(String institutionId);
+    public Iterable<Vuggestue>  getAllInstitution();
 
     public int checkInstitution(String navn);
 

@@ -1,14 +1,17 @@
 package Model.Database;
 
+import Model.DTO.Institutions.Indstser;
 import Model.DTO.Institutions.Institution;
 import Model.DTO.Institutions.Vuggestue;
 import Model.DTO.User.UserDTO;
+import org.jongo.Find;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.json.JSONObject;
 
 import javax.validation.constraints.Null;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 public class InstitutionDAO implements IInstitutionDAO {
     @Override
@@ -56,10 +59,7 @@ public class InstitutionDAO implements IInstitutionDAO {
 
 
 
-    @Override
-    public Response getAllInstitution(String institutionId) {
-        return null;
-    }
+
 
 
 
@@ -85,11 +85,27 @@ public class InstitutionDAO implements IInstitutionDAO {
 
         if(institution== null){
 
-return 0;
+            return 0;
         }
             institutioner.remove("{navn: '"+navn+"'}");
 
 
         return 1;
+    }
+
+
+    @Override
+    public Iterable<Vuggestue> getAllInstitution(){
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+
+        Find result =institutioner.find();
+
+
+
+
+        return result.as(Vuggestue.class);
+
     }
 }

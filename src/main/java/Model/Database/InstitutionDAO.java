@@ -1,19 +1,24 @@
 package Model.Database;
 
-import Model.DTO.Institutions.Indstser;
-import Model.DTO.Institutions.Institution;
+
 import Model.DTO.Institutions.Vuggestue;
-import Model.DTO.User.UserDTO;
 import org.jongo.Find;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
-import org.json.JSONObject;
-
-import javax.validation.constraints.Null;
 import javax.ws.rs.core.Response;
-import java.util.List;
+
+
+/*
+This class is used to make operations in the database.
+ */
+
 
 public class InstitutionDAO implements IInstitutionDAO {
+
+
+    /*
+   This megthos creates an instance in the database.
+    */
     @Override
     public Response createInstitution(Vuggestue institution) {
 
@@ -26,8 +31,11 @@ public class InstitutionDAO implements IInstitutionDAO {
 
             return Response.ok().build(); // Return a response
 
-
     }
+
+    /*
+    This method retrives an instance of Vuggestue from the database
+     */
 
     @Override
     public Response getInstitution(String institutionName) {
@@ -48,8 +56,10 @@ public class InstitutionDAO implements IInstitutionDAO {
         return Response.noContent().entity("Not able to find the instution in the database").build();
     }
 
-
-
+    /*
+    Hvis method will be used to update an Vuggestue instance
+     */
+    //TODO: Implement updateInstitution
     @Override
     public Response updateInstitution(String institutionName) {
          getInstitution(institutionName);
@@ -57,13 +67,9 @@ public class InstitutionDAO implements IInstitutionDAO {
         return null;
     }
 
-
-
-
-
-
-
-
+    /*
+    This checks is an vuggestueinstance exists in the database
+     */
     @Override
     public int checkInstitution(String navn){
 
@@ -71,9 +77,11 @@ public class InstitutionDAO implements IInstitutionDAO {
 
         MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
         return (int)institutioner.count("{navn: '"+navn+"'}");
-
-
     }
+
+    /*
+    Removes an instance of vugggestue from the database.
+     */
 
     @Override
     public int removeInstitution(String navn) {
@@ -93,6 +101,9 @@ public class InstitutionDAO implements IInstitutionDAO {
         return 1;
     }
 
+/*
+Retrives a list of all institutions from the database.
+ */
 
     @Override
     public Iterable<Vuggestue> getAllInstitution(){
@@ -101,9 +112,6 @@ public class InstitutionDAO implements IInstitutionDAO {
         MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
 
         Find result =institutioner.find();
-
-
-
 
         return result.as(Vuggestue.class);
 

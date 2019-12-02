@@ -5,6 +5,12 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
+
+
+/*
+This class constructs an URL that matches the one from Københavns Kommune. Then i returns a Document containing
+all of the tags and attributes fra an URl.
+ */
 public class documentURL {
 
     public String url;
@@ -16,6 +22,9 @@ public class documentURL {
 
     public documentURL(){}
 
+    /*
+    Create a document from URL. A document contains all tags and attributes from a given URL.
+     */
 
     public Document createDocument(String url){
         try {
@@ -27,7 +36,9 @@ public class documentURL {
         }
     }
 
-
+/*
+Constructs an URL so that i matches the one from Københavns Kommune.
+ */
     public void createUrl(String vej, String postNr) {
         String url = url1.concat(vej).concat(url2).concat(postNr).concat(url3);
         setUrl(url);

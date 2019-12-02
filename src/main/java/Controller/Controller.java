@@ -20,12 +20,13 @@ public class Controller {
     public Controller(){}
 
     /*
-    Method inserts all searchresults into the database.
+    Method retrives tilsynsrapporter and inserts all searchresults into the database.
      If one instance exist it will not be insertet into the database.
      */
     public String updateInstitutionQuery(String vejNavn, String postNr){
 try {
     List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn, postNr);
+
 
     if(respons.size()==0){
         return  "Forespørgslen kunne ikke gennemføres";
@@ -34,11 +35,12 @@ try {
     for (Vuggestue a : respons
     ) {
 //TODO: Sikre at indstser ikke bliver dubbleret
-        //Insures that there will be only one
+        //Inserts into database if no other exists
         if (database.checkInstitution(a.getNavn()) == 0) {
             database.createInstitution(a);
             System.out.println("Added : " + a.toString());
         } else {
+            //TODO: Make use of update
             database.removeInstitution(a.getNavn());
             database.createInstitution(a);
         }
@@ -52,6 +54,10 @@ try {
 
     }
 
+    /*
+    This method is retrives a list of institutions from the crawler, and retrives the institutions from the database and
+    returns the Vuggestueobjects to the API.
+     */
     public Response getUserSearchInstitutionsFromDatabase(String vejNavn, String postNr){
         List<Vuggestue> institutionList =crawler.getInstitutions(vejNavn,postNr);
         JSONObject json = new JSONObject();
@@ -68,7 +74,9 @@ try {
         return Response.ok().entity(json).build();
     }
 
-
+/*
+Retrives all Vuggestueobjects from the database and returns a list to the API.
+ */
 
     public Iterable<Vuggestue> getAllInstitutions(){
         return database.getAllInstitution();

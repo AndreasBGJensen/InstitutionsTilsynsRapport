@@ -153,7 +153,6 @@ public class Vuggestue {
     }
 
 
-
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append("{navn: " + navn).append(", ").append("adresse: "+adresse).append(", ").append("aabningstider:" +åbningstider).append(", ").append("telefon:" +tlf).append(", ").append("venteliste: "+venteliste).append(", ").append("link:" +link+"}");

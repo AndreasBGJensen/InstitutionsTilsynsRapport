@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import axios from 'axios';
 const baseUrl = process.env.NODE_ENV === 'development' ?  "http://localhost:8080/":""; //Check if dev
 
-const status = {FETCHING:"Loading", FAILED_TO_FETCH:"Logout", FETCHING_DONE:"Done Loading"};
+const status = {FETCHING:"Loading", FAILED_TO_FETCH:"failed", FETCHING_DONE:"Done Loading"};
 
 
 class Administration extends React.Component {
@@ -18,6 +18,8 @@ class Administration extends React.Component {
 
             searchError: {},
             adresses:[],
+            process: status.FETCHING_DONE,
+            response: "",
         };
     }
 
@@ -44,7 +46,7 @@ console.log("ON SUBMIT: "+this.state.fiels)
         });
         console.log(this.state.fiels)
 
-
+        this.state.process = status.FETCHING;
 axios.post(baseUrl + "rest/institution/update", {
 
         vejnavn: this.state.fiels.vejnavn,
@@ -52,10 +54,13 @@ axios.post(baseUrl + "rest/institution/update", {
 
     })
     .then(res => {
+
         console.log(res)
+        this.setState({response:JSON.stringify(res)});
     })
-    .catch(error =>
+        .catch(error =>
     console.log(error))
+        this.state.process = status.FAILED_TO_FETCH;
     }
 
 
@@ -110,7 +115,14 @@ axios.post(baseUrl + "rest/institution/update", {
                         <input type="submit"/>
 
                 </form>
+
+                <p>{this.state.process}</p>
+
+                <br/>
+                <h1>{this.state.response}</h1>
+
             </div>
+
         )
     }
 }

@@ -23,9 +23,14 @@ class Administration extends React.Component {
         };
     }
 
-
+buttonClickEvent(){
+        const button = document.getElementById("submitButton");
+        button.style.display = false;
+}
 
     onSubmit=(evt)=>{
+        this.buttonClickEvent();
+        this.state.process = status.FETCHING;
 console.log("ON SUBMIT: "+this.state.fiels)
         const adresses = [...this.state.adresses];
         const field = this.state.fiels;
@@ -46,7 +51,7 @@ console.log("ON SUBMIT: "+this.state.fiels)
         });
         console.log(this.state.fiels)
 
-        this.state.process = status.FETCHING;
+
 axios.post(baseUrl + "rest/institution/update", {
 
         vejnavn: this.state.fiels.vejnavn,
@@ -67,8 +72,8 @@ axios.post(baseUrl + "rest/institution/update", {
 //Validates if there is an input
     validate=(fiels)=>{
         const errors={};
-        if(!fiels.vejnavn) errors.adress = "Adress required";
-        if(!fiels.postNr) errors.zipcode ="Zipcode required";
+        if(!fiels.vejnavn) errors.adress = "vejnavn required";
+        if(!fiels.postNr) errors.zipcode ="post nr required";
 
         return errors;
 
@@ -112,7 +117,7 @@ axios.post(baseUrl + "rest/institution/update", {
 
 
 
-                        <input type="submit"/>
+                        <input id="submitButton" type="submit"/>
 
                 </form>
 

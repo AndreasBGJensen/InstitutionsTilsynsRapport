@@ -63,24 +63,31 @@ public class PDFManager {
 
 
     public String toText() throws IOException {
-        this.pdfStripper = null;
-        this.pdDoc = null;
-        this.cosDoc = null;
+       try {
+           this.pdfStripper = null;
+           this.pdDoc = null;
+           this.cosDoc = null;
 
-        file = new File(filePath);
-        parser = new PDFParser(new RandomAccessFile(file, "r")); // update for PDFBox V 2.0
+           file = new File(filePath);
+           parser = new PDFParser(new RandomAccessFile(file, "r")); // update for PDFBox V 2.0
 
-        parser.parse();
-        cosDoc = parser.getDocument();
-        pdfStripper = new PDFTextStripper();
-        pdDoc = new PDDocument(cosDoc);
-        pdDoc.getNumberOfPages();
-        pdfStripper.setStartPage(0);
-        pdfStripper.setEndPage(pdDoc.getNumberOfPages());
-        Text = pdfStripper.getText(pdDoc);
+           parser.parse();
+           cosDoc = parser.getDocument();
+           pdfStripper = new PDFTextStripper();
+           pdDoc = new PDDocument(cosDoc);
+           pdDoc.getNumberOfPages();
+           pdfStripper.setStartPage(0);
+           pdfStripper.setEndPage(pdDoc.getNumberOfPages());
+           Text = pdfStripper.getText(pdDoc);
 
 
-        return Text;
+           return Text;
+       }catch (IOException e){
+           System.out.println("Kunne ikke læse fil");
+           e.printStackTrace();
+
+           return "";
+       }
     }
 
     public void setFilePath(String filePath) {

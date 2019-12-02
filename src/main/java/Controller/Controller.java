@@ -24,31 +24,37 @@ public class Controller {
      If one instance exist it will not be insertet into the database.
      */
     public String updateInstitutionQuery(String vejNavn, String postNr){
-try {
-    List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn, postNr);
+    try {
+        List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn, postNr);
 
-    if(respons.size()==0){
-        return  "Forespørgslen kunne ikke gennemføres";
-    }
-
-    for (Vuggestue a : respons
-    ) {
-//TODO: Sikre at indstser ikke bliver dubbleret
-        //Insures that there will be only one
-        if (database.checkInstitution(a.getNavn()) == 0) {
-            database.createInstitution(a);
-            System.out.println("Added : " + a.toString());
-        } else {
-            database.removeInstitution(a.getNavn());
-            database.createInstitution(a);
+        if(respons.size()==0){
+            return  "Forespørgslen kunne ikke gennemføres";
         }
-    }
 
-    return "Indhentet tilsyn, database opdateret";
+        for (Vuggestue a : respons
+        ) {
+    //TODO: Sikre at indstser ikke bliver dubbleret
+            //Insures that there will be only one
+            int res = database.checkInstitution(a.getNavn());
 
-}catch (Exception e){
-        return "Noget gik galt under indhentningen af data";
-    }
+            if ( res== 0) {
+                database.createInstitution(a);
+                System.out.println("Added : " + a.toString());
+            } else if(res==3){
+                System.out.println("Ikke i stand til at gemme dette navn");
+            }
+
+                else {
+                database.removeInstitution(a.getNavn());
+                database.createInstitution(a);
+            }
+        }
+
+        return "Indhentet tilsyn, database opdateret";
+
+        }catch (Exception e){
+                return "Noget gik galt under indhentningen af data";
+            }
 
     }
 

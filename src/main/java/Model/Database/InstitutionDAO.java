@@ -70,8 +70,15 @@ public class InstitutionDAO implements IInstitutionDAO {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
         MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
-        return (int)institutioner.count("{navn: '"+navn+"'}");
 
+        try {
+            int count = (int) institutioner.count("{navn: '" + navn + "'}");
+
+            return count;
+        }catch(IllegalArgumentException e){
+            System.out.println("Kan ikke slå dette navn op i mongoDB");
+            return 3;
+        }
 
     }
 

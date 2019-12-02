@@ -85,7 +85,9 @@ public class soegningURL implements IBaseURL {
 
 
 
-
+/*
+Return a list of vuggestuer from the search done by getBaseInformations
+ */
 
     @Override
     public List<Vuggestue> getVuggestuer(String vej, String postNr) {

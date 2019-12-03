@@ -24,7 +24,7 @@ public class CampusNetLogin {
     }
 
     @GET @Path("redirect")
-    public Response callback(@QueryParam("ticket") String cnTicket){
+    public Response calylback(@QueryParam("ticket") String cnTicket){
         System.out.println(cnTicket); //Check if we got something back
         //Tjek ticket mod CampusNet
         String body = Unirest.get( "https://auth.dtu.dk/dtu/validate?service=http://localhost:8080/rest/campusnet/redirect&ticket="

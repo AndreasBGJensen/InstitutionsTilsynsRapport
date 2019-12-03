@@ -23,7 +23,8 @@ public class UserAPI {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response getUser(@PathParam("id") String id){
+    public Response getUser(@PathParam("id") String id, @HeaderParam("Authorization") String token){
+        //TODO validate token
         System.out.println("Pathname: "+ id);
 
         return controlle.getUser(id);

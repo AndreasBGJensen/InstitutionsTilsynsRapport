@@ -1,5 +1,6 @@
 import React from 'react'
 import {institution} from '../../stores/InstitutionsStore'
+import {observer} from "mobx-react";
 
 
 //Adding itmes to the list.
@@ -12,7 +13,7 @@ const List = ({ list }) => (
 );
 
 //Designing the table
-const ListItem = ({ item }) => (
+const ListItem = observer(({ item }) => (
    <div>
     <td>
     <tr>
@@ -61,7 +62,7 @@ const ListItem = ({ item }) => (
    </div>
 
 
-);
+));
 
 
 

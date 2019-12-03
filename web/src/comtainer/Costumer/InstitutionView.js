@@ -16,24 +16,56 @@ const ListItem = ({ item }) => (
    <div>
     <td>
     <tr>
-        <div>{item.Navn}</div>
+        <div>{item.navn}</div>
     </tr>
    </td>
+
+
        <td>
            <tr>
-               <div>{item.Adresse}</div>
+               <div>
+                   {
+                   (typeof(item.indstsers)=="object"?
+                       <div>
+                           {
+                               item.tilsynsPath.map((indsats,j)=>(
+                                   <div>
+
+                                           <a href={item.link[j]}>{item.tilsynsPath[j]}</a>
+
+
+                                       )}
+
+
+                                   </div>
+                               ))
+
+                           }
+
+                       </div>
+                           :
+                       null)
+                   }
+
+               </div>
            </tr>
        </td>
+
+
+
        <td>
            <tr>
-               <div><a href={item.Link}>{item.Link}</a></div>
-
+               <div> venteliste {item.venteliste}</div>
            </tr>
        </td>
    </div>
 
 
 );
+
+
+
+
 
 
 class InstitutionView extends React.Component {

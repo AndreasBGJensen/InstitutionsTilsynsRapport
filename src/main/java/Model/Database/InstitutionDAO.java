@@ -1,16 +1,21 @@
 package Model.Database;
 
+import Model.DTO.Institutions.Indstser;
 import Model.DTO.Institutions.Institution;
+import Model.DTO.Institutions.Vuggestue;
 import Model.DTO.User.UserDTO;
+import org.jongo.Find;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.json.JSONObject;
 
+import javax.validation.constraints.Null;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 public class InstitutionDAO implements IInstitutionDAO {
     @Override
-    public Response createInstitution(Institution institution) {
+    public Response createInstitution(Vuggestue institution) {
 
 
             Jongo jongo = new Jongo(MongoConnector.getInstance());
@@ -30,7 +35,7 @@ public class InstitutionDAO implements IInstitutionDAO {
 
         MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
 
-        Institution  institution = institutioner.findOne("{navn: '"+institutionName+"'}").as(Institution.class);
+        Vuggestue institution = institutioner.findOne("{navn: '"+institutionName+"'}").as(Vuggestue.class);
 
         //JSONObject json = new JSONObject(institution.toString());
 
@@ -54,10 +59,53 @@ public class InstitutionDAO implements IInstitutionDAO {
 
 
 
+
+
+
+
+
     @Override
-    public Response getAllInstitution(String institutionId) {
-        return null;
+    public int checkInstitution(String navn){
+
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+        return (int)institutioner.count("{navn: '"+navn+"'}");
+
+
+    }
+
+    @Override
+    public int removeInstitution(String navn) {
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+
+        Vuggestue institution = institutioner.findOne("{navn: '"+navn+"'}").as(Vuggestue.class);
+
+        if(institution== null){
+
+            return 0;
+        }
+            institutioner.remove("{navn: '"+navn+"'}");
+
+
+        return 1;
     }
 
 
+    @Override
+    public Iterable<Vuggestue> getAllInstitution(){
+        Jongo jongo = new Jongo(MongoConnector.getInstance());
+
+        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+
+        Find result =institutioner.find();
+
+
+
+
+        return result.as(Vuggestue.class);
+
+    }
 }

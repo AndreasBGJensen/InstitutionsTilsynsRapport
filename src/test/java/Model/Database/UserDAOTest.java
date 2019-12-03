@@ -62,19 +62,23 @@ Testing that we can delete a user in the database
      */
     @Test
     public void getUser() {
-        //UserDTO getUser = new UserDTO("banan","Andreas","300");
-        //users.save(getUser);
+        UserDTO getUser = new UserDTO("banan","Andreas","300");
+        users.save(getUser);
 
         //Response createdUser =Response.ok().entity(getUser).build();
         Response returnedUser =  test.getUser("300");
 
 
         //UserDTO created = (UserDTO)createdUser.getEntity();
-        UserDTO recieved = (UserDTO)returnedUser.getEntity();
+        String recieved = (String)returnedUser.getEntity();
         //Testing that the recieved Id's at equal. The two object wont be equal.
         //assertEquals(created.getName(), recieved.getName());
 
+        JSONObject json = new JSONObject();
+        json.put("navn",getUser.getName());
+        json.put("userId",getUser.getUserID());
 
+        assertEquals(json.toString(),recieved);
         //Testing that an NoUserInDatabaseException will be returned
         //UserDTO userNoExistence = test.getUser("99999");
         //assertEquals("No such user in database", userNoExistence.getMessage());

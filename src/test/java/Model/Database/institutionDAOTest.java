@@ -1,14 +1,21 @@
 package Model.Database;
 
 import Model.DTO.Institutions.Institution;
+import Model.DTO.Institutions.Vuggestue;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.core.Response;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
+Tester database. Testen har dog en del mangler eftersom at den i bund og grund ikke tester den enkelte metode men også tester
+Oprettelse af database connection osv.
+ */
 
 public class institutionDAOTest {
 
@@ -16,7 +23,7 @@ public class institutionDAOTest {
     private IInstitutionDAO institutionDAO = new InstitutionDAO();
     @Test
     public void createInstitution(){
-        Institution testInstitution = new Institution("Røde Rose","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+        Vuggestue testInstitution = new Vuggestue("Røde Rose","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
         Response response = institutionDAO.createInstitution(testInstitution);
 
@@ -31,11 +38,11 @@ public class institutionDAOTest {
     public void getInstitution(){
 
 
-        Institution testInstitution = new Institution("Test","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+        Vuggestue testInstitution = new Vuggestue("Test","Thorsgade 42","10-16","220689","31","https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
         institutionDAO.createInstitution(testInstitution);
         Response response = institutionDAO.getInstitution("Test");
-        Institution test =  (Institution)response.getEntity();
+        Vuggestue test =  (Vuggestue) response.getEntity();
 
         assertEquals(test.toString(),testInstitution.toString());
         assertEquals(200,response.getStatus());
@@ -50,13 +57,39 @@ public class institutionDAOTest {
     public void ErrorGetInstitution() {
 
 
-        Institution testInstitution = new Institution("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+        Vuggestue testInstitution = new Vuggestue("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
 
-        institutionDAO.createInstitution(testInstitution);
+        institutionDAO.removeInstitution("Test");
+       // institutionDAO.createInstitution(testInstitution);
         Response response = institutionDAO.getInstitution("Test");
 
+//
+        assertEquals(204, response.getStatus());
+    }
 
-        assertEquals(300, response.getStatus());
+
+    @Test
+    public void removeInstitution(){
+        Vuggestue testInstitution = new Vuggestue("Test", "Thorsgade 42", "10-16", "220689", "31", "https://pasningogskole.kk.dk/institution/35245x0/vuggestuen");
+institutionDAO.createInstitution(testInstitution);
+       int result = institutionDAO.removeInstitution("Test");
+
+       assertEquals(1,result);
+
+    }
+
+
+
+    @Test
+    public void getAll(){
+
+
+
+
+        System.out.println(institutionDAO.getAllInstitution());
+
+
+
     }
 
 }

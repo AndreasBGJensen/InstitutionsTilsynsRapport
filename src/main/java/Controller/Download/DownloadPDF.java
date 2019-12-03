@@ -2,6 +2,7 @@ package Controller.Download;
 
 import Controller.TesxtExtraction.OCR;
 import Model.DTO.Institutions.Vuggestue;
+import Model.Util.ValidateContentAttay;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,16 +21,21 @@ public class DownloadPDF {
 
         String nyfilename=filename.concat(endFileType(filename));
         nyfilename=cleanUpFilename(nyfilename);
-        //Inds�tter file og pathname til senere brug
-        vuggestue.addTilsynsPath("./"+path+"/"+nyfilename);
+        //Indsætter file og pathname til senere brug
+        String filepath = "./"+path+"/"+nyfilename; //Hvor skal filen ligge. (Denne path anvendes under ocr)
+        if(ValidateContentAttay.validateContent(vuggestue.getTilsynsPath(),filepath)) {
+            vuggestue.addTilsynsPath("./" + path + "/" + nyfilename);
+        }
         try {
-            createDirectory(path);
+            createDirectory(path);//Naming the directory to the institution name
             System.out.println("opening connection");
             URL url = new URL(adress);
             InputStream in = url.openStream();
             FileOutputStream fos = new FileOutputStream(new File("./"+path+"/"+nyfilename));
 
             System.out.println("reading from resource and writing to file...");
+
+            //So that it is empty in the bit array
             int length = -1;
 
 
@@ -66,6 +72,8 @@ public class DownloadPDF {
     }
 
     private String endFileType(String link){
+
+        //TODO:Sikrer at en filepath ikke bliver til ..pdf eller ..docx
         if(link.contains(".docx")||link.contains(".pdf")){
             return "";
         }

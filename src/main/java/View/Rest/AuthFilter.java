@@ -3,6 +3,7 @@ package View.Rest;
 import javax.annotation.Priority;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
@@ -19,10 +20,15 @@ I stedet for at skrive JWTHandler.validate(token) på alle services, kan du iste
 
         @Override
         public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-            System.out.println(containerRequestContext.getUriInfo().getPath());
-            if (!"login".equals(containerRequestContext.getUriInfo().getPath())) {
-                System.out.println(containerRequestContext.getHeaderString("Authorization"));
-                //Authorize the request!
+            //JWTHandler.validate(containerRequestContext.getHeaderString("Authorization"));
+
+            System.out.println("before: "+containerRequestContext.getUriInfo().getPath());
+            if (!"campusnet/login".equals(containerRequestContext.getUriInfo().getPath())) {
+                if(!"campusnet/redirect".equals(containerRequestContext.getUriInfo().getPath())) {
+                    System.out.println("the header yo yo:" + containerRequestContext.getHeaderString("Authorization"));
+                    //todo: fix the validate
+                    JWTHandler.validate(containerRequestContext.getHeaderString("Authorization"));
+                }
             }
         }
     }

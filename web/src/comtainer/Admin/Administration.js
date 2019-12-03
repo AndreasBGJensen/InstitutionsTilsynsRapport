@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Link} from "react-router-dom"
 import axios from 'axios';
 import {institution} from "../../stores/InstitutionsStore";
+import {adminStore} from './AdminStore'
+import {observer} from "mobx-react";
+
 const baseUrl = process.env.NODE_ENV === 'development' ?  "http://localhost:8080/":""; //Check if dev
 
 const status = {FETCHING:"Loading", FAILED_TO_FETCH:"failed", FETCHING_DONE:"Done Loading"};
@@ -23,6 +26,7 @@ class Administration extends React.Component {
             response: "",
             neterror:""
         };
+
     }
 
 buttonClickEvent(){
@@ -30,52 +34,32 @@ buttonClickEvent(){
         button.style.display = false;
 }
 
-    onSubmit=(evt)=>{
+    onSubmit=(evt)=> {
         this.buttonClickEvent();
-        this.state.process = status.FETCHING;
-console.log("ON SUBMIT: "+this.state.fiels)
+adminStore.response = "";
+        console.log("ON SUBMIT: " + this.state.fiels)
         const adresses = [...this.state.adresses];
         const field = this.state.fiels;
         const fieldError = this.validate(field);
-        this.setState({searchError:fieldError});
+        this.setState({searchError: fieldError});
         evt.preventDefault();
 
-        if(Object.keys(fieldError).length) return;
+        if (Object.keys(fieldError).length) return;
 
 //Here I set the state for the input.
         this.setState({
-            fields:adresses.concat(field),
-            fiels :{
-                vejnavn:field.vejnavn,
-                postNr:field.postNr,
+            fields: adresses.concat(field),
+            fiels: {
+                vejnavn: field.vejnavn,
+                postNr: field.postNr,
 
             }
         });
+        adminStore.vejnavn = this.state.fiels.vejnavn;
+        adminStore.postNr = this.state.fiels.postNr;
+        adminStore.doUpdate();
         console.log(this.state.fiels)
 
-
-axios.post(baseUrl + "rest/institution/update", {
-
-        vejnavn: this.state.fiels.vejnavn,
-        postNr: this.state.fiels.postNr
-
-    }, {
-    headers: {
-        'authorization': localStorage.getItem("jwt-token")
-    }
-})
-    .then(res => {
-
-        console.log(res)
-        this.setState({response:JSON.stringify(res)});
-        institution.fetchItem();
-
-    })
-        .catch(error => {
-            this.setState({neterror: JSON.stringify(error)});
-            this.setState({process: status.FAILED_TO_FETCH});
-            console.log(error)
-        })
 
     }
 
@@ -105,7 +89,7 @@ axios.post(baseUrl + "rest/institution/update", {
 
 
 
-    render() {
+   render() {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
@@ -132,11 +116,11 @@ axios.post(baseUrl + "rest/institution/update", {
 
                 </form>
 
-                <p>{this.state.process}</p>
+                <p>{adminStore.state}</p>
 
                 <br/>
-                <h1>{this.state.response}</h1>
-                <h1>{this.state.error}</h1>
+                <h1>{adminStore.response}</h1>
+
 
             </div>
 
@@ -145,4 +129,4 @@ axios.post(baseUrl + "rest/institution/update", {
 }
 
 
-export default Administration
+export default observer(Administration)

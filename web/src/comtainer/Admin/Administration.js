@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Link} from "react-router-dom"
 import axios from 'axios';
+import {institution} from "../../stores/InstitutionsStore";
 const baseUrl = process.env.NODE_ENV === 'development' ?  "http://localhost:8080/":""; //Check if dev
 
 const status = {FETCHING:"Loading", FAILED_TO_FETCH:"failed", FETCHING_DONE:"Done Loading"};
@@ -57,11 +58,16 @@ axios.post(baseUrl + "rest/institution/update", {
         vejnavn: this.state.fiels.vejnavn,
         postNr: this.state.fiels.postNr
 
-    })
+    }, {
+    headers: {
+        'authorization': localStorage.getItem("jwt-token")
+    }
+})
     .then(res => {
 
         console.log(res)
         this.setState({response:JSON.stringify(res)});
+        institution.fetchItem();
     })
         .catch(error =>
     console.log(error))

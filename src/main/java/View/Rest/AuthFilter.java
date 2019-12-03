@@ -25,7 +25,7 @@ I stedet for at skrive JWTHandler.validate(token) på alle services, kan du iste
             System.out.println("before: "+containerRequestContext.getUriInfo().getPath());
             if (!"campusnet/login".equals(containerRequestContext.getUriInfo().getPath())) {
                 if(!"campusnet/redirect".equals(containerRequestContext.getUriInfo().getPath())) {
-                    System.out.println("the header yo yo:" + containerRequestContext.getHeaderString("Authorization"));
+                    System.out.println("the header(was not correct): " + containerRequestContext.getHeaderString("Authorization"));
                     //todo: fix the validate
                     JWTHandler.validate(containerRequestContext.getHeaderString("Authorization"));
                 }

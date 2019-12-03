@@ -69,6 +69,7 @@ axios.post(baseUrl + "rest/institution/update", {
         console.log(res)
         this.setState({response:JSON.stringify(res)});
         institution.fetchItem();
+
     })
         .catch(error => {
             this.setState({neterror: JSON.stringify(error)});

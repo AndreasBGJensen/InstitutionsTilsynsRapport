@@ -6,7 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import {HashRouter} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 const token = getParameterByName("token");
-console.log(token);
+//todo: make this not null.
+console.log("token: "+token);
 if (token!=null && token.length>0){
     //Store token and redirect to baseURL
     localStorage.setItem("portal-jwt-Token",token);

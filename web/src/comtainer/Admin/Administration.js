@@ -21,6 +21,7 @@ class Administration extends React.Component {
             adresses:[],
             process: status.FETCHING_DONE,
             response: "",
+            neterror:""
         };
     }
 
@@ -69,9 +70,12 @@ axios.post(baseUrl + "rest/institution/update", {
         this.setState({response:JSON.stringify(res)});
         institution.fetchItem();
     })
-        .catch(error =>
-    console.log(error))
-        this.state.process = status.FAILED_TO_FETCH;
+        .catch(error => {
+            this.setState({neterror: JSON.stringify(error)});
+            this.setState({process: status.FAILED_TO_FETCH});
+            console.log(error)
+        })
+
     }
 
 
@@ -110,7 +114,7 @@ axios.post(baseUrl + "rest/institution/update", {
                         value={this.state.vejnavn}
                         onChange={this.onInputChange}
                     />
-                    <span style={{color:'red'}}>{this.state.searchError.adress}</span>
+                    <span style={{color:'red'}}>{this.state.searchError.vejnavn}</span>
                     <br/>
                     <input
                         name="postNr"
@@ -118,7 +122,7 @@ axios.post(baseUrl + "rest/institution/update", {
                         value={this.state.postNr}
                         onChange={this.onInputChange}
                     />
-                    <span style={{color:'red'}}>{this.state.searchError.zipcode}</span>
+                    <span style={{color:'red'}}>{this.state.searchError.postNr}</span>
                     <br/>
 
 
@@ -131,6 +135,7 @@ axios.post(baseUrl + "rest/institution/update", {
 
                 <br/>
                 <h1>{this.state.response}</h1>
+                <h1>{this.state.error}</h1>
 
             </div>
 

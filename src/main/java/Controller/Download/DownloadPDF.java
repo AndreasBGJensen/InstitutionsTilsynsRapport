@@ -26,6 +26,7 @@ public class DownloadPDF {
         if(ValidateContentAttay.validateContent(vuggestue.getTilsynsPath(),filepath)) {
             vuggestue.addTilsynsPath("./" + path + "/" + nyfilename);
         }
+        //Har taget denne ud for at der ikke downloades filer
         //DownloadFile(path, adress, nyfilename);
     }
 

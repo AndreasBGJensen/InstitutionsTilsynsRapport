@@ -24,7 +24,7 @@ public class ControllerGETTilsynsrapport {
 
         vuggestuer = getbaseUrl.getVuggestuer(searchAddress,keyword);
         traversering = new TraverserURL(doc,vuggestuer);    //Adding the links to the vuggestue.
-        extractPdf = new PDFManager(vuggestuer);
+        //extractPdf = new PDFManager(vuggestuer);
         return vuggestuer;
     }
 

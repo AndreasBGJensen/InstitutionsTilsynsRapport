@@ -26,7 +26,7 @@ public class DownloadPDF {
         if(ValidateContentAttay.validateContent(vuggestue.getTilsynsPath(),filepath)) {
             vuggestue.addTilsynsPath("./" + path + "/" + nyfilename);
         }
-        DownloadFile(path, adress, nyfilename);
+        //DownloadFile(path, adress, nyfilename);
     }
 
 

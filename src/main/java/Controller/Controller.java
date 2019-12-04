@@ -1,6 +1,7 @@
 package Controller;
 
 import Controller.CrawlerController.ControllerGETTilsynsrapport;
+import Controller.Download.ErrorDownloadPDFException;
 import Model.DTO.Institutions.Vuggestue;
 import Model.Database.IInstitutionDAO;
 import Model.Database.InstitutionDAO;
@@ -23,7 +24,7 @@ public class Controller {
     Method inserts all searchresults into the database.
      If one instance exist it will not be insertet into the database.
      */
-    public String updateInstitutionQuery(String vejNavn, String postNr){
+    public String updateInstitutionQuery(String vejNavn, String postNr) throws ErrorDownloadPDFException {
     try {
         List<Vuggestue> respons = crawler.getTilsynsrapport(vejNavn, postNr);
 

@@ -2,6 +2,7 @@ package Controller.CrawlerController;
 
 
 
+import Controller.Download.ErrorDownloadPDFException;
 import Model.Crawler.TraverserURL;
 import Model.Crawler.documentURL;
 import Model.Crawler.soegningURL;
@@ -20,7 +21,7 @@ public class ControllerGETTilsynsrapport {
 
     public ControllerGETTilsynsrapport(){}
 
-    public List<Vuggestue> getTilsynsrapport(String searchAddress, String keyword){
+    public List<Vuggestue> getTilsynsrapport(String searchAddress, String keyword) throws ErrorDownloadPDFException {
 
         vuggestuer = getbaseUrl.getVuggestuer(searchAddress,keyword);
         traversering = new TraverserURL(doc,vuggestuer);    //Adding the links to the vuggestue.

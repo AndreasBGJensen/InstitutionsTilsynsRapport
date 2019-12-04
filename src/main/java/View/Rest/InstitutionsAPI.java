@@ -1,5 +1,6 @@
 package View.Rest;
 import Controller.Controller;
+import Controller.Download.ErrorDownloadPDFException;
 import Model.DTO.Institutions.Vuggestue;
 import Model.DTO.SearchParam;
 
@@ -38,8 +39,9 @@ public class InstitutionsAPI {
 
     @Path("update")
     @POST
-    public String deepUpdateDatabase(SearchParam search){
+    public String deepUpdateDatabase(SearchParam search) throws ErrorDownloadPDFException {
         System.out.println(search.toString());
+
         return controller.updateInstitutionQuery(search.getVejnavn(),search.getPostNr());
 
     }

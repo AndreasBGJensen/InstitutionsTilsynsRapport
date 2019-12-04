@@ -1,10 +1,8 @@
 package Controller.Download;
 
-import Controller.TesxtExtraction.OCR;
 import Model.DTO.Institutions.Vuggestue;
 import Model.Util.ValidateContentAttay;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -17,7 +15,7 @@ public class DownloadPDF {
 
     public DownloadPDF(){}
 
-    public void download(String adress, String filename, String path, Vuggestue vuggestue) {
+    public void download(String adress, String filename, String path, Vuggestue vuggestue) throws ErrorDownloadPDFException {
 
         String nyfilename=filename.concat(endFileType(filename));
         nyfilename=cleanUpFilename(nyfilename);
@@ -53,6 +51,8 @@ public class DownloadPDF {
 
         }catch (Exception e){
             e.printStackTrace();
+            throw new ErrorDownloadPDFException("Could not download the file");
+
         }
     }
 

@@ -1,6 +1,7 @@
 package Model.Crawler;
 
 import Controller.Download.DownloadPDF;
+import Controller.Download.ErrorDownloadPDFException;
 import Model.DTO.Institutions.Vuggestue;
 import Model.Util.ValidateContentAttay;
 import org.jsoup.nodes.Document;
@@ -22,14 +23,14 @@ public class TraverserURL {
     ConcurrentHashMap<String,String> checker = new ConcurrentHashMap<String, String>();
 
 
-    public TraverserURL(documentURL doc, List<Vuggestue> vuggestuer){
+    public TraverserURL(documentURL doc, List<Vuggestue> vuggestuer) throws ErrorDownloadPDFException{
         this.doc = doc;
         this.vuggestuer = vuggestuer;
         startTraversing();
 
     }
 
-    private void startTraversing(){
+    private void startTraversing() throws ErrorDownloadPDFException{
         /*
         This loope is made for test purpes only. It will ensure that there will be only one element of vuggestuer
          */
@@ -99,7 +100,7 @@ public class TraverserURL {
 
 
 
-    private void goToOmInstitutione(String url) throws NullPointerException{
+    private void goToOmInstitutione(String url) throws NullPointerException, ErrorDownloadPDFException{
         Document html = doc.createDocument(url);
 
 
@@ -171,7 +172,7 @@ public class TraverserURL {
     /*
     This method
      */
-    private void traverseLinks(String url) {
+    private void traverseLinks(String url) throws ErrorDownloadPDFException {
         if(url!=null) {
             existingUrl.put(url, url);
             checker.put(url, url);
@@ -195,7 +196,7 @@ public class TraverserURL {
     }
 
 
-    private void getTilsysnrapport(Element y ){
+    private void getTilsysnrapport(Element y ) throws ErrorDownloadPDFException {
         if(y.toString().contains("tilsyn")||y.toString().contains("Tilsyn")){ //Hvis at den URI vi har fat i indeholder tilsyn
             if(doc.createDocument(y.attr("abs:href"))==null){//Hvis vi rammer en endestation
 

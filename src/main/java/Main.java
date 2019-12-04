@@ -22,9 +22,6 @@ public class Main {
 
             tomcat.getServer().await();
 
-
-
-
         }
         catch(Exception e) {
             e.printStackTrace();

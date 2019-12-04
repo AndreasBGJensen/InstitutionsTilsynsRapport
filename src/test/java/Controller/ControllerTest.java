@@ -1,8 +1,6 @@
 package Controller;
 
-import Controller.CrawlerController.ControllerGETTilsynsrapport;
-import Model.DTO.Institutions.Vuggestue;
-import com.mongodb.util.JSON;
+
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
@@ -23,9 +21,9 @@ public class ControllerTest {
     public void updateInstitutionQueryTest() {
 
 
-        String[] vejNavn ={"Mimersgade","Åfløjen","Stærevej", "Nordbanegade","Ravnsborggade","Gothersgade","Holbergsgade","Wilders Plads","Islands Brygge"};
+        String[] vejNavn ={"Mimersgade","Åfløjen","Stærevej", "Nordbanegade","Gothersgade","Holbergsgade","Wilders Plads","Islands Brygge"};
 
-        String[] postNr = {"2200","2700","2400","2200","2200","1123","1057","1403","2300"};
+        String[] postNr = {"2200","2700","2400","2200","1123","1057","1403","2300"};
 
 
 
@@ -97,5 +95,29 @@ for(int i = 0; i<vejNavn.length;i++) {
 
 
 
+    }
+
+    /*
+    Denne test tester lidt af hvert.
+    Der er på bagrund af denne test lavet try-catch i PDFManager og i InstitutionsDAO (hvis at et navn ikke er kompertibelt med MongoDB)
+     */
+
+    @Test
+    public void whenManyFilesAreImagesAndInstitutionNamesAreNotCompatableWithMongoDB() {
+
+
+        String[] vejNavn ={"Dahlerupsgade"};
+
+        String[] postNr = {"1603"};
+
+
+
+
+
+        String respons;
+        String testString = "Indhentet tilsyn, database opdateret";
+
+        respons = control.updateInstitutionQuery(vejNavn[0], postNr[0]);
+        assertEquals(testString,respons);
     }
 }

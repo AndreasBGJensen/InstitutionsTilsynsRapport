@@ -20,6 +20,10 @@ public class ControllerGETTilsynsrapport {
 
     public ControllerGETTilsynsrapport(){}
 
+
+    /*
+   Retrives Tilsynsrapporter from kk webside.
+    */
     public List<Vuggestue> getTilsynsrapport(String searchAddress, String keyword){
 
         vuggestuer = getbaseUrl.getVuggestuer(searchAddress,keyword);
@@ -28,6 +32,10 @@ public class ControllerGETTilsynsrapport {
         return vuggestuer;
     }
 
+
+    /*
+    Returns a list of institutions without retriving all the tilsynsrapports.
+     */
     public List<Vuggestue> getInstitutions(String searchAddress, String keyword){
         return vuggestuer = getbaseUrl.getVuggestuer(searchAddress,keyword);
     }

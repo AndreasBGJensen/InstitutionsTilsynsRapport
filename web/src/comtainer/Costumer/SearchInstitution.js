@@ -1,24 +1,31 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Link} from "react-router-dom"
+const baseUrl = process.env.NODE_ENV === 'development' ?  "http://localhost:8080/":""; //Check if dev
+
+const status = {FETCHING:"Loading", FAILED_TO_FETCH:"Logout", FETCHING_DONE:"Done Loading"};
+
+const defaultSearch = [];
 
 class SearchInstitution extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             fiels : {
-                adress:'',
-                zipcode:''},
+                vejnavn:'',
+                postNr:''},
 
             searchError: {},
             adresses:[],
         };
     }
 
+
+
     onSubmit=(evt)=>{
 
         const adresses = [...this.state.adresses];
-        const field = this.state.fiels
+        const field = this.state.fiels;
         const fieldError = this.validate(field);
         this.setState({searchError:fieldError});
         evt.preventDefault();
@@ -29,8 +36,8 @@ class SearchInstitution extends React.Component {
         this.setState({
             fields:adresses.concat(field),
             fiels :{
-                adress:field.adress,
-                zipcode:field.zipcode,
+                vejnavn:field.vejnavn,
+                postNr:field.postNr,
 
             }
         });
@@ -38,7 +45,25 @@ class SearchInstitution extends React.Component {
 
 
 
+        fetch(baseUrl + "rest/institution",{
 
+            method:"GET",
+            body:JSON.stringify(this.fiels),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+
+        })
+            .then(
+                (response)=> {
+                    response.text().then(
+                        (token)=> {
+                            console.log("Got Token: " + token)
+
+
+                        })
+
+                })
 
     }
 //Validates if there is an input
@@ -58,9 +83,10 @@ class SearchInstitution extends React.Component {
         field[event.target.name] = event.target.value;
         this.setState({user: field});
         console.log('Handle change' +event.target.name);
-        console.log('Handle change' +this.state.fiels.adress);
-        console.log('Handle change' +this.state.fiels.zipcode);
+        console.log('Handle change' +this.state.fiels.vejnavn);
+        console.log('Handle change' +this.state.fiels.postNr);
     };
+
 
 
 
@@ -70,17 +96,17 @@ class SearchInstitution extends React.Component {
             <div>
                 <form onSubmit={this.onSubmit}>
                     <input
-                        name="adress"
+                        name="vejnavn"
                         placeholder="Adresse"
-                        value={this.state.adress}
+                        value={this.state.vejnavn}
                         onChange={this.onInputChange}
                     />
                     <span style={{color:'red'}}>{this.state.searchError.adress}</span>
                     <br/>
                     <input
-                        name="zipcode"
+                        name="postNr"
                         placeholder="post nr"
-                        value={this.state.zipcode}
+                        value={this.state.postNr}
                         onChange={this.onInputChange}
                     />
                     <span style={{color:'red'}}>{this.state.searchError.zipcode}</span>
@@ -92,6 +118,7 @@ class SearchInstitution extends React.Component {
                         state:{
                             name: "Hello"
                         }
+
                     }} >
                         <input type="submit"/>
                     </Link>

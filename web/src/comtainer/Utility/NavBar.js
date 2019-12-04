@@ -18,7 +18,7 @@ class NavBar extends React.Component {
                         <Nav.Link href="https://www.kk.dk/indhold/s%C3%B8g-og-skriv-dit-barn-op-til-vuggestue-og-dagpleje">Opskrivning til vuggestue</Nav.Link>
 
                         <Nav.Link href="#login">Log Ind</Nav.Link>
-                        <Nav.Link href="#register">Registrer dig</Nav.Link>
+                        <Nav.Link href="#admin">Admin</Nav.Link>
 
                     </Nav>
                 </Navbar.Collapse>

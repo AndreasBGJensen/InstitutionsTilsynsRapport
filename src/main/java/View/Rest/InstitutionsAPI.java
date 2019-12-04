@@ -36,8 +36,10 @@ public class InstitutionsAPI {
     }
 
 
-    @GET
+    @Path("update")
+    @POST
     public String deepUpdateDatabase(SearchParam search){
+        System.out.println(search.toString());
         return controller.updateInstitutionQuery(search.getVejnavn(),search.getPostNr());
 
     }

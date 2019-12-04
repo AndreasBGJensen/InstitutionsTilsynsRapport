@@ -10,7 +10,7 @@ function LandingPage(){
             <h1>This is the landingPage</h1>
 
             <Link to ={{//Linking to search results
-                pathname: "/search",
+                pathname: "/searchResults",
 
             }} >
                 <Button> Se Tilsyn </Button>

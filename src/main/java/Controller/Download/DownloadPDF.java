@@ -26,34 +26,7 @@ public class DownloadPDF {
         if(ValidateContentAttay.validateContent(vuggestue.getTilsynsPath(),filepath)) {
             vuggestue.addTilsynsPath("./" + path + "/" + nyfilename);
         }
-        try {
-            createDirectory(path);//Naming the directory to the institution name
-            System.out.println("opening connection");
-            URL url = new URL(adress);
-            InputStream in = url.openStream();
-            FileOutputStream fos = new FileOutputStream(new File("./"+path+"/"+nyfilename));
-
-            System.out.println("reading from resource and writing to file...");
-
-            //So that it is empty in the bit array
-            int length = -1;
-
-
-
-            byte[] buffer = new byte[1024];// buffer for portion of data from connection
-            while ((length = in.read(buffer)) > -1) {
-
-                fos.write(buffer, 0, length);
-            }
-
-
-            fos.close();
-            in.close();
-            System.out.println("File downloaded");
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        DownloadFile(path, adress, nyfilename);
     }
 
 
@@ -87,5 +60,37 @@ public class DownloadPDF {
         String nyFilename = nyFirlename.replace(",","");
         return nyFilename;
     }
+
+
+private void DownloadFile(String path, String adress, String nyfilename){
+    try {
+        createDirectory(path);//Naming the directory to the institution name
+        System.out.println("opening connection");
+        URL url = new URL(adress);
+        InputStream in = url.openStream();
+        FileOutputStream fos = new FileOutputStream(new File("./"+path+"/"+nyfilename));
+
+        System.out.println("reading from resource and writing to file...");
+
+        //So that it is empty in the bit array
+        int length = -1;
+
+
+
+        byte[] buffer = new byte[1024];// buffer for portion of data from connection
+        while ((length = in.read(buffer)) > -1) {
+
+            fos.write(buffer, 0, length);
+        }
+
+
+        fos.close();
+        in.close();
+        System.out.println("File downloaded");
+
+    }catch (Exception e){
+        e.printStackTrace();
+    }
 }
 
+}

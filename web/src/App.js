@@ -13,6 +13,7 @@ import Container from "react-bootstrap/Container";
 import institutionView from "./comtainer/Costumer/InstitutionView"
 import LandingPage from "./comtainer/LandingPage"
 import Navbar from "./comtainer/Utility/NavBar";
+import Administration from "./comtainer/Admin/Administration";
 
 
 
@@ -41,6 +42,7 @@ render()
                         <Route path={"/login"} component={LogIn}/>
                         <Route path={"/search"} component={SearchInstitution}/>
                         <Route path={"/searchResults"} component={institutionView}/>
+                        <Route path={"/admin"} component={Administration}/>
                     </Switch>
                 </Router>
             </Container>

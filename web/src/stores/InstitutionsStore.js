@@ -20,12 +20,16 @@ state = states.DONE;
 
 //The fetchcall
     fetchItem (){
+        const token = tokenStore.token;
         //{headers:{"authorization":localStorage.getItem(("jwt-token"))}}
         //todo: the fetch statment is parsing the header in a wrong way.
         this.state = states.LOADING;
-        console.log("the header passed from store:"+{headers:{"Authorization":"Bearer"+localStorage.getItem(("jwt-token"))}});
-        fetch(baseUrl + "rest/institution/all",{headers:{'Authorization':"Bearer"+localStorage.getItem(('jwt-token'))}})
-            .then((response)=> {
+        console.log("the header passed from store:"+{headers:{"Authorization":"Bearer"+localStorage.getItem(("portal-jwt-Token"))}});
+        fetch(baseUrl + "rest/institution/all",{
+            headers:{
+                Authorization: token
+            }
+        }).then((response)=> {
                 console.log(response);
                 response.json().then((json)=> {
                     this.test = json;

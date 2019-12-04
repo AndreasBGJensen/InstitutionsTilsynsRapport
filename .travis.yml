@@ -1,4 +1,9 @@
-language: java
+matrix:
+  include:
+      - language: java
+        jdk: oraclejd11
 
-before_install:
-  - npm install
+          - language: node_js
+            before_install: cd web
+            node_js:
+              - 7

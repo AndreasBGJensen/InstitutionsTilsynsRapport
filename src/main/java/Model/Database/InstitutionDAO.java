@@ -14,13 +14,14 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 public class InstitutionDAO implements IInstitutionDAO {
+    private static final String COLLECTION = "TestInstitutionsStore";
     @Override
     public Response createInstitution(Vuggestue institution) {
 
 
             Jongo jongo = new Jongo(MongoConnector.getInstance());
 
-            MongoCollection users = jongo.getCollection("InstitutionsStore");
+            MongoCollection users = jongo.getCollection(COLLECTION);
 
             users.save(institution);
 
@@ -33,7 +34,7 @@ public class InstitutionDAO implements IInstitutionDAO {
     public Response getInstitution(String institutionName) {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
-        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+        MongoCollection institutioner = jongo.getCollection(COLLECTION);
 
         Vuggestue institution = institutioner.findOne("{navn: '"+institutionName+"'}").as(Vuggestue.class);
 
@@ -69,9 +70,16 @@ public class InstitutionDAO implements IInstitutionDAO {
 
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
-        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
-        return (int)institutioner.count("{navn: '"+navn+"'}");
+        MongoCollection institutioner = jongo.getCollection(COLLECTION);
 
+        try {
+            int count = (int) institutioner.count("{navn: '" + navn + "'}");
+
+            return count;
+        }catch(IllegalArgumentException e){
+            System.out.println("Kan ikke slå dette navn op i mongoDB");
+            return 3;
+        }
 
     }
 
@@ -79,7 +87,7 @@ public class InstitutionDAO implements IInstitutionDAO {
     public int removeInstitution(String navn) {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
-        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+        MongoCollection institutioner = jongo.getCollection(COLLECTION);
 
         Vuggestue institution = institutioner.findOne("{navn: '"+navn+"'}").as(Vuggestue.class);
 
@@ -98,7 +106,7 @@ public class InstitutionDAO implements IInstitutionDAO {
     public Iterable<Vuggestue> getAllInstitution(){
         Jongo jongo = new Jongo(MongoConnector.getInstance());
 
-        MongoCollection institutioner = jongo.getCollection("InstitutionsStore");
+        MongoCollection institutioner = jongo.getCollection(COLLECTION);
 
         Find result =institutioner.find();
 

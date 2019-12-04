@@ -1,17 +1,11 @@
 package Model.Database;
 
-import Model.DTO.Institutions.Indstser;
-import Model.DTO.Institutions.Institution;
 import Model.DTO.Institutions.Vuggestue;
-import Model.DTO.User.UserDTO;
 import org.jongo.Find;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
-import org.json.JSONObject;
 
-import javax.validation.constraints.Null;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 public class InstitutionDAO implements IInstitutionDAO {
     private static final String COLLECTION = "TestInstitutionsStore";

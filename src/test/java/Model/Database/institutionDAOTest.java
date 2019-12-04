@@ -1,14 +1,9 @@
 package Model.Database;
 
-import Model.DTO.Institutions.Institution;
 import Model.DTO.Institutions.Vuggestue;
-import org.jongo.Jongo;
-import org.jongo.MongoCollection;
 import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.core.Response;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

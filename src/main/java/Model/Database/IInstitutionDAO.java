@@ -1,10 +1,8 @@
 package Model.Database;
 
-import Model.DTO.Institutions.Institution;
 import Model.DTO.Institutions.Vuggestue;
 
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 
 public interface IInstitutionDAO {
 

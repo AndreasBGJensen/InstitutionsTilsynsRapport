@@ -1,6 +1,5 @@
 package Controller.UserController;
 
-import Model.DTO.Institutions.Institution;
 import Model.DTO.Institutions.Vuggestue;
 import Model.Database.IInstitutionDAO;
 import Model.Database.IUserDAO;

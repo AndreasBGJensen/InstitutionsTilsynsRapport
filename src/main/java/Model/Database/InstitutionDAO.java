@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 public class InstitutionDAO implements IInstitutionDAO {
-    private static final String COLLECTION = "TestInstitutionStore";
+    private static final String COLLECTION = "TestInstitutionsStore";
     @Override
     public Response createInstitution(Vuggestue institution) {
 

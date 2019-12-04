@@ -4,13 +4,13 @@ import {observer} from "mobx-react";
 
 
 //Adding itmes to the list.
-const List = ({ list }) => (
+const List = observer(({ list }) => (
     <ul>
         {list.map((item,key) => (
             <ListItem key={key} item={item} />
         ))}
     </ul>
-);
+));
 
 //Designing the table
 const ListItem = observer(({ item }) => (
@@ -69,6 +69,7 @@ const ListItem = observer(({ item }) => (
 
 
 
+
 class InstitutionView extends React.Component {
     constructor(props) {
         super(props);
@@ -100,4 +101,4 @@ class InstitutionView extends React.Component {
     }
 }
 
-export default InstitutionView
+export default observer(InstitutionView)

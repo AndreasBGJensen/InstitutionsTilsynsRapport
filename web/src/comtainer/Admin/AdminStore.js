@@ -34,7 +34,7 @@ doUpdate(){
 
     })
         .catch(error => {
-            this.setState({neterror: JSON.stringify(error)});
+
             this.state = status.FAILED_TO_FETCH;
             console.log(error)
         })

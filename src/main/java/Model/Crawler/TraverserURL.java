@@ -169,7 +169,9 @@ public class TraverserURL {
     }
 
     /*
-    This method
+    This method velidates if the crawler have visitet the url before. If not it will extract all links from that url.
+    The checter holds all url adresses that have been visited. The existingUrl holds all URL adresses that are beeing visitet at the moment
+    (One institution at a time.)
      */
     private void traverseLinks(String url) {
         if(url!=null) {
@@ -194,7 +196,9 @@ public class TraverserURL {
         }
     }
 
-
+    /*
+    Validates if the crawler have reached an url endpoint and that i contains tilsyn, which is the naming at most of the institution websites.
+     */
     private void getTilsysnrapport(Element y ){
         if(y.toString().contains("tilsyn")||y.toString().contains("Tilsyn")){ //Hvis at den URI vi har fat i indeholder tilsyn
             if(doc.createDocument(y.attr("abs:href"))==null){//Hvis vi rammer en endestation

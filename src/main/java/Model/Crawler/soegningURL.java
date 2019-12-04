@@ -27,9 +27,12 @@ public class soegningURL implements IBaseURL {
     public soegningURL(documentURL doc){this.doc = doc;};
 
 
-    /*
-    This method retrives all the base informations for the kk hjemmeside. And puts all vuggestuer in a list.
-    The getTilsynLink retrives all the links were the tilsyn are located.
+   /*
+    This method retrives all the base informations for the kk hjemmeside (result page). All of the institutions exist
+    within the tag "fiels-content". This is why we loop througt this list of elements from this tag and extracting
+    the informations that we want. Finally the an Vuggestue object is created and alle the informations are set to
+    this object. Vuggestue is inserted in a list whith all vuggestuer from this search result.
+    The getTilsynLink returns the link to the website of the institution.
      */
 
     public void getBaseInformations(Document doc){
@@ -52,6 +55,10 @@ public class soegningURL implements IBaseURL {
 
     }
 
+
+    /*
+   returns  the link to the webpage of the institution. It finds the webpage from the tag "ic-link tx-ln".
+    */
     private String getTilsynLink(String url) {
         String url1=url;
         try{
@@ -74,11 +81,9 @@ public class soegningURL implements IBaseURL {
 
 
 
-
-
-
-
-
+    /*
+    Return a list of vuggestuer from the search done by getBaseInformations
+     */
     @Override
     public List<Vuggestue> getVuggestuer(String vej, String postNr) {
         this.vej = vej;
@@ -88,8 +93,6 @@ public class soegningURL implements IBaseURL {
         //doc = Jsoup.connect(url).get();
 
         getBaseInformations(doc.createDocument(doc.getUrl()));
-
-
 
         return vuggestuer;
     }

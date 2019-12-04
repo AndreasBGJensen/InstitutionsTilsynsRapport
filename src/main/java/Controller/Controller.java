@@ -43,7 +43,6 @@ public class Controller {
             } else if(res==3){
                 System.out.println("Ikke i stand til at gemme dette navn");
             }
-
                 else {
                 database.removeInstitution(a.getNavn());
                 database.createInstitution(a);
@@ -58,6 +57,11 @@ public class Controller {
 
     }
 
+
+    /*
+   This method is retrives a list of institutions from the crawler, and retrives the institutions from the database and
+   returns the Vuggestueobjects to the API.
+    */
     public Response getUserSearchInstitutionsFromDatabase(String vejNavn, String postNr){
         List<Vuggestue> institutionList =crawler.getInstitutions(vejNavn,postNr);
         JSONObject json = new JSONObject();
@@ -75,7 +79,9 @@ public class Controller {
     }
 
 
-
+    /*
+    Retrives all Vuggestueobjects from the database and returns a list to the API.
+     */
     public Iterable<Vuggestue> getAllInstitutions(){
         return database.getAllInstitution();
     }

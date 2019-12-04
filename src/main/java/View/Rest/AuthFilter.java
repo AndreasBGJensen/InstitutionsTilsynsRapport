@@ -7,13 +7,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
-    //This class is automatically called along CORS filter when the rest api is called
 
-/*
-Ligesom med CORS-filteret er de muligt at filtrere requests før de overhovedet rammer et endpoint.
-I stedet for at skrive JWTHandler.validate(token) på alle services, kan du istedet fange requests'ne og validere dem alle.
- Husk at login-services IKKE skal valideres..
- */
     @Provider
     @Priority(1000)
     public class AuthFilter implements ContainerRequestFilter {
@@ -22,7 +16,8 @@ I stedet for at skrive JWTHandler.validate(token) på alle services, kan du iste
         public void filter(ContainerRequestContext containerRequestContext) throws IOException {
             //JWTHandler.validate(containerRequestContext.getHeaderString("Authorization"));
 
-            System.out.println("before: "+containerRequestContext.getUriInfo().getPath());
+            //System.out.println("before: "+containerRequestContext.getUriInfo().getPath());
+            System.out.println("(in authfilter before auth)Auth header: " + containerRequestContext.getHeaderString("Authorization"));
             if (!"campusnet/login".equals(containerRequestContext.getUriInfo().getPath())) {
                 if(!"campusnet/redirect".equals(containerRequestContext.getUriInfo().getPath())) {
                     System.out.println("the header(was not correct): " + containerRequestContext.getHeaderString("Authorization"));

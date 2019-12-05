@@ -9,13 +9,11 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class InstitutionDAO implements IInstitutionDAO {
     private static final String COLLECTION = "TestInstitutionsStore";
+
     @Override
     public void createInstitution(Vuggestue institution) throws DbException {
-
         Jongo jongo = new Jongo(MongoConnector.getInstance());
-
         MongoCollection users = jongo.getCollection(COLLECTION);
-
         if (users != null) {
             users.save(institution);
         } else {
@@ -27,15 +25,10 @@ public class InstitutionDAO implements IInstitutionDAO {
     @Override
     public Vuggestue getInstitution(String institutionName) throws DbException {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
-
         MongoCollection institutioner = jongo.getCollection(COLLECTION);
-
         Vuggestue institution = institutioner.findOne("{navn: '" + institutionName + "'}").as(Vuggestue.class);
-
         //JSONObject json = new JSONObject(institution.toString());
-
         System.out.println(institution);
-
         if (institution != null) {
             return institution;
         } else {
@@ -44,40 +37,30 @@ public class InstitutionDAO implements IInstitutionDAO {
         }
     }
 
-
     @Override
     public void updateInstitution(String institutionName) throws DbException {
         getInstitution(institutionName);
         throw new NotImplementedException();
     }
 
-
     @Override
     public int checkInstitution(String navn) {
-
         Jongo jongo = new Jongo(MongoConnector.getInstance());
-
         MongoCollection institutioner = jongo.getCollection(COLLECTION);
-
         try {
             int count = (int) institutioner.count("{navn: '" + navn + "'}");
-
             return count;
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("Kan ikke slå dette navn op i mongoDB");
             return 3;
         }
-
     }
 
     @Override
     public void removeInstitution(String navn) throws DbException {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
-
         MongoCollection institutioner = jongo.getCollection(COLLECTION);
-
         Vuggestue institution = institutioner.findOne("{navn: '" + navn + "'}").as(Vuggestue.class);
-
         if (institution != null) {
             institutioner.remove("{navn: '" + navn + "'}");
         } else {

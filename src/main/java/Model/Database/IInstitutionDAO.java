@@ -11,7 +11,7 @@ public interface IInstitutionDAO {
 
     public void updateInstitution(String institutionId) throws DbException;
 
-    public Iterable<Vuggestue>  getAllInstitution();
+    public Iterable<Vuggestue> getAllInstitution();
 
     public int checkInstitution(String navn);
 

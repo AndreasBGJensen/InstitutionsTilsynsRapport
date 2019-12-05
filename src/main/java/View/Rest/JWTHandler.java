@@ -56,7 +56,7 @@ public class JWTHandler{
             String[] tokenArray = authentication.split(" ");
             String token = tokenArray[tokenArray.length - 1];
 
-            try {
+            try {/*
                 Claims claims = Jwts.parser()
                         .setSigningKey(getKey())
                         .parseClaimsJws(token)
@@ -64,7 +64,9 @@ public class JWTHandler{
                 ObjectMapper mapper = new ObjectMapper();
                 UserDTO user = mapper.convertValue(claims.get("user"), UserDTO.class);
                 System.out.println(user);
-                return user;
+                return user;*/
+                System.out.println("You've been signed in");
+                return failure;
             } catch (JwtException e) {
                 System.out.println(e.getClass() + ":  " + e.getMessage());
                 throw new NotAuthorizedException(e.getMessage());

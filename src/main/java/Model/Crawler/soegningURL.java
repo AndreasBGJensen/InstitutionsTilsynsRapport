@@ -24,7 +24,7 @@ public class soegningURL implements IBaseURL {
     String vej = "";
     String postNr = "";
 
-    public soegningURL(documentURL doc){this.doc = doc;};
+    public soegningURL(documentURL doc){this.doc = doc;}
 
 
    /*

@@ -4,7 +4,7 @@ import org.apache.catalina.startup.Tomcat;
 import java.io.File;
 //
 public class Main {
-    public static void main(String[] args) {
+    public static void ymain(String[] args) {
         try {
             Tomcat tomcat = new Tomcat();
             tomcat.setBaseDir("temp");

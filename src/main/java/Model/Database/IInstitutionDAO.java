@@ -1,23 +1,20 @@
 package Model.Database;
 
-import Model.DTO.Institutions.Institution;
 import Model.DTO.Institutions.Vuggestue;
-
-import javax.ws.rs.core.Response;
-import java.util.ArrayList;
+import View.Rest.Exceptions.DbException;
 
 public interface IInstitutionDAO {
 
-    public Response createInstitution(Vuggestue institution);
+    public void createInstitution(Vuggestue institution) throws DbException;
 
-    public Response getInstitution(String institutionId);
+    public Vuggestue getInstitution(String institutionId) throws DbException;
 
-    public Response updateInstitution(String institutionId);
+    public void updateInstitution(String institutionId) throws DbException;
 
-    public Iterable<Vuggestue>  getAllInstitution();
+    public Iterable<Vuggestue> getAllInstitution();
 
     public int checkInstitution(String navn);
 
-    public int removeInstitution(String navn);
+    public void removeInstitution(String navn) throws DbException;
 
 }

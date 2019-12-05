@@ -1,16 +1,10 @@
-
 package View.Rest;
 
-
 import Model.DTO.User.UserDTO;
-import View.Rest.JWTHandler;
-import org.mindrot.jbcrypt.BCrypt;
-
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 
 @Path("login")
 @Produces(MediaType.APPLICATION_JSON)
@@ -18,24 +12,22 @@ import javax.ws.rs.core.Response;
 public class LoginService {
 
     @POST
-    public Response postLoginData(LoginData login){
+    public String postLoginData(LoginData login) {
 
-
-        if (login!=null && "brian".equals(login.getUsername()) && "kodeord".equals(login.getPassword())){
+        if (login != null && "brian".equals(login.getUsername()) && "kodeord".equals(login.getPassword())) {
             String answer = JWTHandler.generateJwtToken(new UserDTO(login.getUsername(), ""));
-            return Response.ok().entity(answer).build();
+            return answer;
+        } else {
+            throw new NotAuthorizedException("forkert brugernavn/kodeord");
         }
-        throw new NotAuthorizedException("forkert brugernavn/kodeord");
     }
 
     @POST
     @Path("tokentest")
     @Consumes(MediaType.TEXT_PLAIN)
-    public Response postToken(String token){
+    public Response postToken(String token) {
         UserDTO validate = JWTHandler.validate(token);
         return Response.ok().entity(validate.toString()).build();
     }
 
-
 }
-

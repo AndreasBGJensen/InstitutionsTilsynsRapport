@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.core.Response;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UserDAOTest {
 
@@ -26,19 +26,17 @@ Testing that we can create a user in the database
  */
 
     @Test
-    public void createUser(){
-
+    public void createUser() {
         //Response response = test.createUser(testUser);
         users.find("{userId: '22'}").as(String.class);
 
         //assertEquals("900",response);
     }
 
-/*
-Auther: Andreas
-Testing that we can delete a user in the database
-
- */
+    /*
+    Auther: Andreas
+    Testing that we can delete a user in the database
+     */
     @Test
     public void deleteUser() {
         //UserDTO deleteUser = new UserDTO("banan","Andreas","2");
@@ -50,8 +48,7 @@ Testing that we can delete a user in the database
         //Making the JSONObject so et is easy to get the code tag.
         JSONObject entety = new JSONObject(response.getEntity().toString());
 
-        assertEquals(1,entety.get("code"));
-
+        assertEquals(1, entety.get("code"));
     }
 
     /*
@@ -66,19 +63,17 @@ Testing that we can delete a user in the database
         users.save(getUser);
 
         //Response createdUser =Response.ok().entity(getUser).build();
-        Response returnedUser =  test.getUser("300");
-
-
+        Response returnedUser = test.getUser("300");
         //UserDTO created = (UserDTO)createdUser.getEntity();
-        String recieved = (String)returnedUser.getEntity();
+        String recieved = (String) returnedUser.getEntity();
         //Testing that the recieved Id's at equal. The two object wont be equal.
         //assertEquals(created.getName(), recieved.getName());
 
         JSONObject json = new JSONObject();
-        json.put("navn",getUser.getName());
-        json.put("userId",getUser.getUserID());
+        json.put("navn", getUser.getName());
+        json.put("userId", getUser.getUserID());
 
-        assertEquals(json.toString(),recieved);
+        assertEquals(json.toString(), recieved);
         //Testing that an NoUserInDatabaseException will be returned
         //UserDTO userNoExistence = test.getUser("99999");
         //assertEquals("No such user in database", userNoExistence.getMessage());

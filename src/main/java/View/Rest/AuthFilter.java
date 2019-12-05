@@ -22,7 +22,7 @@ I stedet for at skrive JWTHandler.validate(token) på alle services, kan du iste
         @Override
         public void filter(ContainerRequestContext containerRequestContext) throws IOException {
             //JWTHandler.validate(containerRequestContext.getHeaderString("Authorization"));
-
+            if ("options".equals(containerRequestContext.getMethod().toLowerCase())){ return;}
             //System.out.println("before: "+containerRequestContext.getUriInfo().getPath());
             System.out.println("(in authfilter before auth)Auth header: " + containerRequestContext.getHeaderString("Authorization"));
             if (!"campusnet/login".equals(containerRequestContext.getUriInfo().getPath())) {

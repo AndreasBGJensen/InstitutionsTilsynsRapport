@@ -28,7 +28,7 @@ state = states.DONE;
         console.log("the header passed from store:"+{headers:{Authorization: localStorage.getItem(("portal-jwt-Token"))}});
         fetch(baseUrl + "rest/institution/all",{
             headers:{
-                "Authorization": "token"
+                "Authorization": localStorage.getItem(("portal-jwt-Token"))
             }
         }).then((response)=> {
                 console.log(response);

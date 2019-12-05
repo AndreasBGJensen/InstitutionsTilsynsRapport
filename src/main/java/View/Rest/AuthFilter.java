@@ -17,13 +17,16 @@ I stedet for at skrive JWTHandler.validate(token) på alle services, kan du iste
     @Priority(1000)
     public class AuthFilter implements ContainerRequestFilter {
 
-        @Override
-        public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-            System.out.println("URI endpath: "+containerRequestContext.getUriInfo().getPath());
-            if (!"login".equals(containerRequestContext.getUriInfo().getPath())) {
-                System.out.println("Auth Header(in auth filther): "+containerRequestContext.getHeaderString("Authorization"));
-                //Authorize the request!
+    @Override
+    public void filter(ContainerRequestContext containerRequestContext) throws IOException {
+        System.out.println("URI endpath: " + containerRequestContext.getUriInfo().getPath());
+        if (!"campusnet/login".equals(containerRequestContext.getUriInfo().getPath())) {
+            if (!"campusnet/redirect".equals(containerRequestContext.getUriInfo().getPath())) {
+                System.out.println("Auth Header(in auth filter): " + containerRequestContext.getHeaderString("Authorization"));
+                JWTHandler.validate(containerRequestContext.getHeaderString("Authorization"));
+
             }
         }
     }
+}
 

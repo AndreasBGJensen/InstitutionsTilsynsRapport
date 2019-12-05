@@ -11,7 +11,7 @@ export class TokenStore {
     logindata = {username:"",password:""};
 
     constructor() {
-        this.token = localStorage.getItem("girafToken")
+        this.token = localStorage.getItem("portal-jwt-Token")
         //Validate if token is still good and keep/discard token and set state
     }
 
@@ -29,7 +29,7 @@ export class TokenStore {
                     (token)=> {
                         console.log("Got Token: " + token);
                         this.token=token;
-                        localStorage.setItem("girafToken",token);
+                        localStorage.setItem("portal-jwt-Token",token);
                         this.state=Loginstates.LOGGED_IN;}
 
                 )}

@@ -7,6 +7,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
+import org.apache.tomcat.jni.User;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.ws.rs.NotAuthorizedException;
@@ -49,20 +50,29 @@ public class JWTHandler{
     }
 
     public static UserDTO validate(String authentication) {
-        String[] tokenArray = authentication.split(" ");
-        String token = tokenArray[tokenArray.length - 1];
-        try {
-            Claims claims = Jwts.parser()
-                    .setSigningKey(getKey())
-                    .parseClaimsJws(token)
-                    .getBody();
-            ObjectMapper mapper = new ObjectMapper();
-            UserDTO user = mapper.convertValue(claims.get("user"), UserDTO.class);
-            System.out.println(user);
-            return user;
-        } catch (JwtException e){
-            System.out.println(e.getClass() +":  "+ e.getMessage() );
-            throw new NotAuthorizedException(e.getMessage());
+        UserDTO failure = new UserDTO();
+        if(authentication!=null) {
+
+            String[] tokenArray = authentication.split(" ");
+            String token = tokenArray[tokenArray.length - 1];
+
+            try {
+                Claims claims = Jwts.parser()
+                        .setSigningKey(getKey())
+                        .parseClaimsJws(token)
+                        .getBody();
+                ObjectMapper mapper = new ObjectMapper();
+                UserDTO user = mapper.convertValue(claims.get("user"), UserDTO.class);
+                System.out.println(user);
+                return user;
+            } catch (JwtException e) {
+                System.out.println(e.getClass() + ":  " + e.getMessage());
+                throw new NotAuthorizedException(e.getMessage());
+            }
+        }else{
+            //throw new NotAuthorizedException("you need to sign in");
+            System.out.println("You need to sign in");
+            return failure;
         }
     }
 

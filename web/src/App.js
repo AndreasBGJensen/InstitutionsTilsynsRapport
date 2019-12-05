@@ -14,6 +14,8 @@ import institutionView from "./comtainer/Costumer/InstitutionView"
 import LandingPage from "./comtainer/LandingPage"
 import Navbar from "./comtainer/Utility/NavBar";
 import Administration from "./comtainer/Admin/Administration";
+import {tokenStore} from "./stores/TokenStore";
+import Button from "react-bootstrap/Button";
 
 
 
@@ -32,7 +34,7 @@ render()
                 <Navbar/>
 
 
-
+                {/*<Button onClick = {() => tokenStore.doLogin()}/>*/}
 
 
                 <Router>

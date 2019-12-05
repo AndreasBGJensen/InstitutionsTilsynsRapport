@@ -1,5 +1,6 @@
 
 import {decorate, observable} from "mobx";
+import {tokenStore} from "./TokenStore";
 const baseUrl = process.env.NODE_ENV === 'development' ?  "http://localhost:8080/":""; //Check if dev
 
 const states = {LOADING:"LOAD", DONE:"DONE", FAILED:"FAILED"}
@@ -14,16 +15,16 @@ state = states.DONE;
 
     constructor() {
         //Loading data when it when the store is initialized.
-        this.fetchItem();
+this.fetchItem();
     }
 
 
 //The fetchcall
     fetchItem (){
-
+        const token = tokenStore.token;
         this.state = states.LOADING;
         fetch(baseUrl + "rest/institution/all", {headers:{
-                "Authorization": "some token"
+                "Authorization": localStorage.getItem(("portal-jwt-Token"))
             }})
             .then((response)=> {
                 console.log(response);

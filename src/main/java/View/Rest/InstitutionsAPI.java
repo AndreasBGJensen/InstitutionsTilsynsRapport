@@ -9,10 +9,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR;
-
 
 @Path("institution")
 @Produces(MediaType.APPLICATION_JSON)

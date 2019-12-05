@@ -5,9 +5,11 @@ import Controller.UserController.IUserController;
 import Controller.UserController.UserController;
 import View.Rest.Exceptions.NotFoundException;
 
+import javax.annotation.Priority;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.Provider;
 
 
 @Path("mongo")

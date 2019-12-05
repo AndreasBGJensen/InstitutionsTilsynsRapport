@@ -17,6 +17,9 @@ import java.io.IOException;
 
         @Override
         public void filter(ContainerRequestContext requestContext) throws IOException {
+
+            System.out.println("(in CORS filter) Auth header: "+requestContext.getHeaderString("Authorization"));
+
             if (System.getenv("HEROKUBUILD")==null) {
                 response.setHeader("Access-Control-Allow-Origin", "*");
                 response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS, PATCH");

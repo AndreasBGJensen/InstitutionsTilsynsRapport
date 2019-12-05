@@ -19,9 +19,9 @@ I stedet for at skrive JWTHandler.validate(token) på alle services, kan du iste
 
         @Override
         public void filter(ContainerRequestContext containerRequestContext) throws IOException {
-            System.out.println(containerRequestContext.getUriInfo().getPath());
+            System.out.println("URI endpath: "+containerRequestContext.getUriInfo().getPath());
             if (!"login".equals(containerRequestContext.getUriInfo().getPath())) {
-                System.out.println(containerRequestContext.getHeaderString("Authorization"));
+                System.out.println("Auth Header(in auth filther): "+containerRequestContext.getHeaderString("Authorization"));
                 //Authorize the request!
             }
         }

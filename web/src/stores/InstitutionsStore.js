@@ -22,7 +22,9 @@ state = states.DONE;
     fetchItem (){
 
         this.state = states.LOADING;
-        fetch(baseUrl + "rest/institution/all")
+        fetch(baseUrl + "rest/institution/all", {headers:{
+                "Authorization": "some token"
+            }})
             .then((response)=> {
                 console.log(response);
                 response.json().then((json)=> {

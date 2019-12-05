@@ -40,6 +40,4 @@ public class Indsatser {
     public void setIndsatser(HashMap<String, String> indsatser) {
         this.indsatser = indsatser;
     }
-
-
 }

@@ -5,7 +5,6 @@ import org.jongo.marshall.jackson.oid.MongoId;
 
 import java.util.ArrayList;
 
-
 /*
 TODO: Organize this class so that it only relys on Lombok: Problem When using Lombok
 it will not instanciate Arraylists if it is not present in the build.
@@ -15,6 +14,8 @@ it will not instanciate Arraylists if it is not present in the build.
 @AllArgsConstructor
 @Builder
 @ToString
+@Getter
+@Setter
 public class Vuggestue {
     @MongoId
     private String _id;
@@ -27,7 +28,6 @@ public class Vuggestue {
     private ArrayList<String> tilsynsPath = new ArrayList<>();
     private ArrayList<Indsatser> indsatser = new ArrayList<>();
 
-
     public Vuggestue(String navn, String adresse, String åbningstider, String tlf, String venteliste, String link) {
         this.navn = navn;
         this.adresse = adresse;
@@ -37,33 +37,22 @@ public class Vuggestue {
         this.link.add(link);
     }
 
-
     public String getBaseLink() {
         return this.link.get(0);
     }
-
 
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append("{navn: " + navn).append(", ").append("adresse: " + adresse).append(", ").append("aabningstider:" + åbningstider).append(", ").append("telefon:" + tlf).append(", ").append("venteliste: " + venteliste).append(", ").append("link:" + link + "}");
         return string.toString(); //To string method for StringBuilder
-
     }
 
-    public void addIndsts(Indsatser indsats) {
+    public void addIndsats(Indsatser indsats) {
         this.indsatser.add(indsats);
     }
 
     public Indsatser getIndsats(int i) {
         return indsatser.get(i);
-    }
-
-    public String getNavn() {
-        return navn;
-    }
-
-    public ArrayList<String> getTilsynsPath() {
-        return this.tilsynsPath;
     }
 
     public void addTilsynsPath(String path) {
@@ -73,6 +62,14 @@ public class Vuggestue {
     public void setTilsynsPath(int i, String newPath) {
         String oldPath = this.tilsynsPath.get(i);
         this.tilsynsPath.get(i).replace(oldPath, newPath);
+    }
+
+    public ArrayList<String> getTilsynsPath() {
+        return tilsynsPath;
+    }
+
+    public String getNavn() {
+        return navn;
     }
 
     public void addLink(String link) {

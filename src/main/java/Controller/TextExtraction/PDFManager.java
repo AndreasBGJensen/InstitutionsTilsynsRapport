@@ -173,7 +173,7 @@ public class PDFManager {
                 indsats.setTilsyn(a.getTilsynsPath().get(h));
 
                 setFilePath(a.getTilsynsPath().get(h));
-                a.addIndsts(indsats);
+                a.addIndsats(indsats);
                 System.out.println(a.getNavn());
                 try {
 

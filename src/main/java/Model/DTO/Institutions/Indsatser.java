@@ -1,7 +1,6 @@
 package Model.DTO.Institutions;
 
 import lombok.*;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -16,15 +15,15 @@ public class Indsatser {
     private HashMap<String, String> indsatser = new HashMap<String, String>();
     private String tilsyn = "";
 
-    public Indsatser(JSONObject json) {
-        this.setIndsatser((HashMap) json.get("indstsers"));
-        this.setTilsyn((String) json.get("tilsyn"));
+//    public Indsatser(JSONObject json) {
+//        this.setIndsatser((HashMap) json.get("indstsers"));
+//        this.setTilsyn((String) json.get("tilsyn"));
+//
+//    }
 
-    }
-
-    public Indsatser() {
-
-    }
+//    public Indsatser() {
+//
+//    }
 
     public void addIndsats(String beskrivelse, String indsats) {
         indsatser.put(beskrivelse, indsats);

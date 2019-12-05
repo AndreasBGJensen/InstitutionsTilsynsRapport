@@ -2,6 +2,7 @@ package Model.DTO.Institutions;
 
 import lombok.*;
 import org.jongo.marshall.jackson.oid.MongoId;
+
 import java.util.ArrayList;
 
 
@@ -23,9 +24,8 @@ public class Vuggestue {
     private String tlf = "";
     private String venteliste = "";
     private ArrayList<String> link = new ArrayList<String>();
-    private ArrayList<String> tilsynsPath= new ArrayList<>();
-    private ArrayList<Indstser> indstsers = new ArrayList<>();
-
+    private ArrayList<String> tilsynsPath = new ArrayList<>();
+    private ArrayList<Indsatser> indsatser = new ArrayList<>();
 
 
     public Vuggestue(String navn, String adresse, String åbningstider, String tlf, String venteliste, String link) {
@@ -45,32 +45,37 @@ public class Vuggestue {
 
     public String toString() {
         StringBuilder string = new StringBuilder();
-        string.append("{navn: " + navn).append(", ").append("adresse: "+adresse).append(", ").append("aabningstider:" +åbningstider).append(", ").append("telefon:" +tlf).append(", ").append("venteliste: "+venteliste).append(", ").append("link:" +link+"}");
+        string.append("{navn: " + navn).append(", ").append("adresse: " + adresse).append(", ").append("aabningstider:" + åbningstider).append(", ").append("telefon:" + tlf).append(", ").append("venteliste: " + venteliste).append(", ").append("link:" + link + "}");
         return string.toString(); //To string method for StringBuilder
 
     }
 
-    public void addIndsts(Indstser indsats) {
-        this.indstsers.add(indsats);
+    public void addIndsts(Indsatser indsats) {
+        this.indsatser.add(indsats);
     }
 
-    public Indstser getIndsats(int i){
-        return indstsers.get(i);
+    public Indsatser getIndsats(int i) {
+        return indsatser.get(i);
     }
 
+    public String getNavn() {
+        return navn;
+    }
 
-    public void addTilsynsPath(String path){
+    public ArrayList<String> getTilsynsPath() {
+        return this.tilsynsPath;
+    }
+
+    public void addTilsynsPath(String path) {
         this.tilsynsPath.add(path);
     }
 
-    public void setTilsynsPath(int i, String newPath){
+    public void setTilsynsPath(int i, String newPath) {
         String oldPath = this.tilsynsPath.get(i);
-        this.tilsynsPath.get(i).replace(oldPath,newPath);
+        this.tilsynsPath.get(i).replace(oldPath, newPath);
     }
 
-
-    public void addLink(String link){
+    public void addLink(String link) {
         this.link.add(link);
     }
-
 }

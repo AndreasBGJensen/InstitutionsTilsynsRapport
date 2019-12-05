@@ -5,7 +5,6 @@ import View.Rest.Exceptions.DbException;
 import org.jongo.Find;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class InstitutionDAO implements IInstitutionDAO {
     private static final String COLLECTION = "TestInstitutionsStore";
@@ -40,7 +39,7 @@ public class InstitutionDAO implements IInstitutionDAO {
     @Override
     public void updateInstitution(String institutionName) throws DbException {
         getInstitution(institutionName);
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     @Override

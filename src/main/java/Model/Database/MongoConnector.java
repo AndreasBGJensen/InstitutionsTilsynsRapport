@@ -15,6 +15,7 @@ public class MongoConnector {
             instance = new MongoConnector();
             return instance.mongoClient.getDB(database);
         }else{
+
             return instance.mongoClient.getDB(database);
         }
     }

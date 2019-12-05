@@ -11,25 +11,20 @@ import javax.ws.rs.core.Response;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UserDAOTest {
-
     UserDAO test = new UserDAO();
     //UserDTO testUser = new UserDTO("banan","Andreas Jensen","33");
     Jongo jongo = new Jongo(MongoConnector.getInstance());
-
     MongoCollection users = jongo.getCollection("Users");
-
 
 /*
 Auther: Andreas
 Testing that we can create a user in the database
-
  */
 
     @Test
     public void createUser() {
         //Response response = test.createUser(testUser);
         users.find("{userId: '22'}").as(String.class);
-
         //assertEquals("900",response);
     }
 
@@ -41,10 +36,7 @@ Testing that we can create a user in the database
     public void deleteUser() {
         //UserDTO deleteUser = new UserDTO("banan","Andreas","2");
         //users.save(deleteUser);
-
         Response response = test.deleteUser("2");
-
-
         //Making the JSONObject so et is easy to get the code tag.
         JSONObject entety = new JSONObject(response.getEntity().toString());
 
@@ -55,13 +47,11 @@ Testing that we can create a user in the database
     Auther: Andreas
     Testing that we can get a user in the database
     and that we will get a error if a user does not exist in the database.
-
      */
     @Test
     public void getUser() {
-        UserDTO getUser = new UserDTO("banan","Andreas","300");
+        UserDTO getUser = new UserDTO("banan", "Andreas", "300");
         users.save(getUser);
-
         //Response createdUser =Response.ok().entity(getUser).build();
         Response returnedUser = test.getUser("300");
         //UserDTO created = (UserDTO)createdUser.getEntity();
@@ -77,6 +67,5 @@ Testing that we can create a user in the database
         //Testing that an NoUserInDatabaseException will be returned
         //UserDTO userNoExistence = test.getUser("99999");
         //assertEquals("No such user in database", userNoExistence.getMessage());
-
     }
 }

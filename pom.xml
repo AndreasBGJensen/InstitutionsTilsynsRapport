@@ -23,7 +23,6 @@
                         <!-- includes Services in jar-->
                         <transformer
                                 implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-
                     </transformers>
                     <finalName>Heroku01</finalName>
                 </configuration>
@@ -60,7 +59,6 @@
             <version>${tomcat.version}</version>
         </dependency>
 
-
         <!-- Rest Spec -->
         <dependency>
             <groupId>javax.ws.rs</groupId>
@@ -85,8 +83,8 @@
             <artifactId>jersey-hk2</artifactId>
             <version>2.27</version>
         </dependency>
-        <!-- Json mapper -->
 
+        <!-- Json mapper -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
@@ -105,8 +103,6 @@
             <version>1.1</version>
         </dependency>
 
-
-
         <!--junit-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -121,14 +117,12 @@
             <scope>test</scope>
         </dependency>
 
-
         <!--MongoDB-->
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.11.1</version>
         </dependency>
-
         <!--JONGO for MongoDB-->
         <!-- https://mvnrepository.com/artifact/org.jongo/jongo -->
         <dependency>
@@ -136,9 +130,6 @@
             <artifactId>jongo</artifactId>
             <version>1.4.0</version>
         </dependency>
-
-
-
 
         <!--JSON-->
         <dependency>
@@ -176,9 +167,6 @@
             <version>0.4</version>
         </dependency>
 
-
-
-
         <!--OCR-->
         <!-- https://mvnrepository.com/artifact/com.asprise.ocr/java-ocr-api -->
         <dependency>
@@ -186,8 +174,6 @@
             <artifactId>java-ocr-api</artifactId>
             <version>15.3.0.3</version>
         </dependency>
-
-
 
         <!--PDFOperations-->
         <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
@@ -204,7 +190,6 @@
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
         </dependency>
-
     </dependencies>
 
     <profiles>
@@ -257,12 +242,10 @@
                                         </resource>
                                     </resources>
                                 </configuration>
-
                             </execution>
                         </executions>
                         <configuration>
                             <nonFilteredFileExtensions>
-
                                 <nonFilteredFileExtension>woff</nonFilteredFileExtension>
                                 <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
                                 <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
@@ -273,6 +256,10 @@
             </build>
         </profile>
     </profiles>
-    <!--Metoden ovenfor anvender IntelliJ's indbyggede compiler og SDK. Maven har indbygget funktionalitet til at køre build scripts. I det følgende anvendes maven-shade-plugin'et. Det sørger for at pakke din kode og alle dependencies i en 'fat'- eller 'über'-jar.-->
-
+    <!--
+    Metoden ovenfor anvender IntelliJ's indbyggede compiler og SDK.
+    Maven har indbygget funktionalitet til at køre build scripts.
+    I det følgende anvendes maven-shade-plugin'et.
+    Det sørger for at pakke din kode og alle dependencies i en 'fat'- eller 'über'-jar.
+    -->
 </project>

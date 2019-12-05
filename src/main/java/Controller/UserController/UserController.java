@@ -15,7 +15,6 @@ public class UserController implements IUserController, IInstitutionDAO {
     private IUserDAO userDAO = new UserDAO();
     private IInstitutionDAO institutionDAO = new InstitutionDAO();
 
-
     @Override
     public Response createUser(JSONObject input) {
     return null;
@@ -31,8 +30,6 @@ public class UserController implements IUserController, IInstitutionDAO {
 
         return userDAO.deleteUser(input) ;
     }
-
-
 
     @Override
     public Response getUser(String id) {

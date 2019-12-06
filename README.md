@@ -18,6 +18,7 @@ Single Page Application aiming to give an overview of daycare options, based on 
 - Import maven project (e.g. right-click pom.xml and mark as maven) and enable maven auto-import.
 - open terminal and navigate to web folder `cd web`
 - run `npm install`
+- run `npm install axios`
 - Build the project using maven package `mvn package`
 - Run with `npm 
 

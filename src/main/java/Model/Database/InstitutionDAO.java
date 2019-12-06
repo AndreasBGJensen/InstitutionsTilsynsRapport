@@ -26,7 +26,7 @@ public class InstitutionDAO implements IInstitutionDAO {
         Jongo jongo = new Jongo(MongoConnector.getInstance());
         MongoCollection institutioner = jongo.getCollection(COLLECTION);
         Vuggestue institution = institutioner.findOne("{navn: '" + institutionName + "'}").as(Vuggestue.class);
-        //JSONObject json = new JSONObject(institution.toString());
+
         System.out.println(institution);
         if (institution != null) {
             return institution;

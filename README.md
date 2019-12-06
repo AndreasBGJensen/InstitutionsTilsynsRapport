@@ -1,5 +1,5 @@
 # InstitutionsTilsynsRapport
-E19 DevOps - masterFinal er brancen der skal bruges
+E19 DevOps
 # Tilsyn.dk
 
 ## Vision

@@ -32,7 +32,7 @@ const ListItem = observer(({ item }) => (
                                item.tilsynsPath.map((indsats,j)=>(
                                    <div>
 
-                                           <a href={item.link[j]}>{item.tilsynsPath[j]}</a>
+                                           <a href={item.link[j+1]}>{item.tilsynsPath[j]}</a>
 
 
                                        )}

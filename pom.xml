@@ -121,7 +121,7 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
-            <version>3.11.1</version>
+            <version>3.11.3</version>
         </dependency>
         <!--JONGO for MongoDB-->
         <!-- https://mvnrepository.com/artifact/org.jongo/jongo -->
